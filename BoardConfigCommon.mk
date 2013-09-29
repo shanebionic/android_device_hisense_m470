@@ -77,7 +77,7 @@ endif
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
-BOARD_USES_GROUPER_MODULES := true
+#BOARD_USES_GROUPER_MODULES := true
 
 # Required for CWM
 BOARD_HAS_NO_SELECT_BUTTON := true
