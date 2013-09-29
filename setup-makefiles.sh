@@ -16,13 +16,13 @@
 
 #--------------------------------------------------------------
 
-DEVICE=grouper
-MANUFACTURER=asus
+DEVICE=m470
+MANUFACTURER=hisense
 OUTVENDOR=vendor
 #--------------------------------------------------------------
 
 #--------------------------------------------------------------
-# ASUS
+# HISENSE
 #--------------------------------------------------------------
 
 OUTDIR=$OUTVENDOR/$MANUFACTURER/$DEVICE
@@ -43,9 +43,9 @@ MAKEFILE=../../../$OUTDIR/device-vendor.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_STEM := grouper/device-partial.mk
+LOCAL_STEM := m470/device-partial.mk
 
-\$(call inherit-product-if-exists, vendor/asus/\$(LOCAL_STEM))
+\$(call inherit-product-if-exists, vendor/hisense/\$(LOCAL_STEM))
 \$(call inherit-product-if-exists, vendor/broadcom/\$(LOCAL_STEM))
 \$(call inherit-product-if-exists, vendor/elan/\$(LOCAL_STEM))
 \$(call inherit-product-if-exists, vendor/invensense/\$(LOCAL_STEM))
@@ -76,9 +76,9 @@ MAKEFILE=../../../$OUTDIR/BoardConfigVendor.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_STEM := grouper/BoardConfigPartial.mk
+LOCAL_STEM := m470/BoardConfigPartial.mk
 
--include vendor/asus/\$(LOCAL_STEM)
+-include vendor/hisense/\$(LOCAL_STEM)
 -include vendor/broadcom/\$(LOCAL_STEM)
 -include vendor/elan/\$(LOCAL_STEM)
 -include vendor/invensense/\$(LOCAL_STEM)
@@ -111,14 +111,14 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Asus blob(s) necessary for Grouper hardware
+# HISENSE blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     btmacreader \\
     camera.tegra3 \\
     libdrmwvmplugin \\
     libsensors.lightsensor \\
     libwvm \\
-    sensors.grouper \\
+    sensors.m470 \\
     sensors-config \\
     tf_daemon
 EOF
@@ -145,7 +145,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := btmacreader   
@@ -178,7 +178,7 @@ include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libsensors.lightsensor   
-LOCAL_MODULE_OWNER := asus
+LOCAL_MODULE_OWNER := hisense
 LOCAL_SRC_FILES := libsensors.lightsensor.so
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .so
@@ -197,9 +197,9 @@ LOCAL_MODULE_PATH := \$(TARGET_OUT_VENDOR)/lib
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE := sensors.grouper   
-LOCAL_MODULE_OWNER := asus
-LOCAL_SRC_FILES := sensors.grouper.so
+LOCAL_MODULE := sensors.m470   
+LOCAL_MODULE_OWNER := hisense
+LOCAL_SRC_FILES := sensors.m470.so
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
@@ -252,7 +252,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := glgps
@@ -315,7 +315,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Broadcom blob(s) necessary for Grouper hardware
+# Broadcom blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     glgps \\
     gps.tegra3 \\
@@ -367,7 +367,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := gralloc.tegra3
@@ -951,7 +951,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# NVIDIA blob(s) necessary for Grouper hardware
+# NVIDIA blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     nvavp_os_00001000 \\
     nvavp_os_0ff00000 \\
@@ -1058,7 +1058,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libdrmdecrypt
@@ -1112,7 +1112,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Widevine blob(s) necessary for Grouper hardware
+# Widevine blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     libdrmdecrypt \\
     libwvdrm_L1 \\
@@ -1163,7 +1163,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libinvensense_hal
@@ -1217,7 +1217,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Invensense blob(s) necessary for Grouper hardware
+# Invensense blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     libinvensense_hal \\
     libmllite \\
@@ -1267,7 +1267,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := touch_fw
@@ -1301,7 +1301,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Elan blob(s) necessary for Grouper hardware
+# Elan blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     touch_fw
 EOF
@@ -1349,7 +1349,7 @@ MAKEFILE=../../../$OUTDIR/proprietary/Android.mk
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),grouper)
+ifeq (\$(TARGET_DEVICE),m470)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libpn544_fw
@@ -1383,7 +1383,7 @@ MAKEFILE=../../../$OUTDIR/device-partial.mk
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# NXP blob(s) necessary for Grouper hardware
+# NXP blob(s) necessary for m470 hardware
 PRODUCT_PACKAGES := \\
     libpn544_fw
 EOF
@@ -1410,85 +1410,85 @@ EOF
 # MOVE FILES TO RIGHT PLACE
 #-------------------------------------------------------------------------
 
-ASUSDIR=../../../$OUTVENDOR/$MANUFACTURER/$DEVICE/proprietary
+HISENSEDIR=../../../$OUTVENDOR/$MANUFACTURER/$DEVICE/proprietary
 
 # BROADCOM
 TARGET=../../../$OUTVENDOR/broadcom/$DEVICE/proprietary
-mv $ASUSDIR/bcm4330.hcd $TARGET
-mv $ASUSDIR/glgps $TARGET
-mv $ASUSDIR/gps.tegra3.so $TARGET
-mv $ASUSDIR/gpsconfig.xml $TARGET
+mv $HISENSEDIR/bcm4330.hcd $TARGET
+mv $HISENSEDIR/glgps $TARGET
+mv $HISENSEDIR/gps.tegra3.so $TARGET
+mv $HISENSEDIR/gpsconfig.xml $TARGET
 # NVIDIA
 TARGET=../../../$OUTVENDOR/nvidia/$DEVICE/proprietary
-mv $ASUSDIR/gralloc.tegra3.so $TARGET
-mv $ASUSDIR/hwcomposer.tegra3.so $TARGET
-mv $ASUSDIR/libEGL_tegra.so $TARGET
-mv $ASUSDIR/libGLESv1_CM_tegra.so $TARGET
-mv $ASUSDIR/libGLESv2_tegra.so $TARGET
-mv $ASUSDIR/libardrv_dynamic.so $TARGET
-mv $ASUSDIR/libcgdrv.so $TARGET
-mv $ASUSDIR/libnvapputil.so $TARGET
-mv $ASUSDIR/libnvasfparserhal.so $TARGET
-mv $ASUSDIR/libnvaviparserhal.so $TARGET
-mv $ASUSDIR/libnvavp.so $TARGET
-mv $ASUSDIR/libnvcamerahdr.so $TARGET
-mv $ASUSDIR/libnvddk_2d.so $TARGET
-mv $ASUSDIR/libnvddk_2d_v2.so $TARGET
-mv $ASUSDIR/libnvdispmgr_d.so $TARGET
-mv $ASUSDIR/libnvmm.so $TARGET
-mv $ASUSDIR/libnvmm_audio.so $TARGET
-mv $ASUSDIR/libnvmm_camera.so $TARGET
-mv $ASUSDIR/libnvmm_contentpipe.so $TARGET
-mv $ASUSDIR/libnvmm_image.so $TARGET
-mv $ASUSDIR/libnvmm_manager.so $TARGET
-mv $ASUSDIR/libnvmm_misc.so $TARGET
-mv $ASUSDIR/libnvmm_parser.so $TARGET
-mv $ASUSDIR/libnvmm_service.so $TARGET
-mv $ASUSDIR/libnvmm_utils.so $TARGET
-mv $ASUSDIR/libnvmm_video.so $TARGET
-mv $ASUSDIR/libnvmm_writer.so $TARGET
-mv $ASUSDIR/libnvmmlite.so $TARGET
-mv $ASUSDIR/libnvmmlite_audio.so $TARGET
-mv $ASUSDIR/libnvmmlite_image.so $TARGET
-mv $ASUSDIR/libnvmmlite_utils.so $TARGET
-mv $ASUSDIR/libnvmmlite_video.so $TARGET
-mv $ASUSDIR/libnvodm_dtvtuner.so $TARGET
-mv $ASUSDIR/libnvodm_hdmi.so $TARGET
-mv $ASUSDIR/libnvodm_imager.so $TARGET
-mv $ASUSDIR/libnvodm_misc.so $TARGET
-mv $ASUSDIR/libnvodm_query.so $TARGET
-mv $ASUSDIR/libnvomx.so $TARGET
-mv $ASUSDIR/libnvomxilclient.so $TARGET
-mv $ASUSDIR/libnvos.so $TARGET
-mv $ASUSDIR/libnvparser.so $TARGET
-mv $ASUSDIR/libnvrm.so $TARGET
-mv $ASUSDIR/libnvrm_graphics.so $TARGET
-mv $ASUSDIR/libnvsm.so $TARGET
-mv $ASUSDIR/libnvtvmr.so $TARGET
-mv $ASUSDIR/libnvwinsys.so $TARGET
-mv $ASUSDIR/libnvwsi.so $TARGET
-mv $ASUSDIR/libstagefrighthw.so $TARGET
-mv $ASUSDIR/libtf_crypto_sst.so $TARGET
-mv $ASUSDIR/nvavp_os_00001000.bin $TARGET
-mv $ASUSDIR/nvavp_os_0ff00000.bin $TARGET
-mv $ASUSDIR/nvavp_os_e0000000.bin $TARGET
-mv $ASUSDIR/nvavp_os_eff00000.bin $TARGET
-mv $ASUSDIR/nvavp_vid_ucode_alt.bin $TARGET
-mv $ASUSDIR/nvcamera.conf $TARGET
-mv $ASUSDIR/nvram.txt $TARGET
+mv $HISENSEDIR/gralloc.tegra3.so $TARGET
+mv $HISENSEDIR/hwcomposer.tegra3.so $TARGET
+mv $HISENSEDIR/libEGL_tegra.so $TARGET
+mv $HISENSEDIR/libGLESv1_CM_tegra.so $TARGET
+mv $HISENSEDIR/libGLESv2_tegra.so $TARGET
+mv $HISENSEDIR/libardrv_dynamic.so $TARGET
+mv $HISENSEDIR/libcgdrv.so $TARGET
+mv $HISENSEDIR/libnvapputil.so $TARGET
+mv $HISENSEDIR/libnvasfparserhal.so $TARGET
+mv $HISENSEDIR/libnvaviparserhal.so $TARGET
+mv $HISENSEDIR/libnvavp.so $TARGET
+mv $HISENSEDIR/libnvcamerahdr.so $TARGET
+mv $HISENSEDIR/libnvddk_2d.so $TARGET
+mv $HISENSEDIR/libnvddk_2d_v2.so $TARGET
+mv $HISENSEDIR/libnvdispmgr_d.so $TARGET
+mv $HISENSEDIR/libnvmm.so $TARGET
+mv $HISENSEDIR/libnvmm_audio.so $TARGET
+mv $HISENSEDIR/libnvmm_camera.so $TARGET
+mv $HISENSEDIR/libnvmm_contentpipe.so $TARGET
+mv $HISENSEDIR/libnvmm_image.so $TARGET
+mv $HISENSEDIR/libnvmm_manager.so $TARGET
+mv $HISENSEDIR/libnvmm_misc.so $TARGET
+mv $HISENSEDIR/libnvmm_parser.so $TARGET
+mv $HISENSEDIR/libnvmm_service.so $TARGET
+mv $HISENSEDIR/libnvmm_utils.so $TARGET
+mv $HISENSEDIR/libnvmm_video.so $TARGET
+mv $HISENSEDIR/libnvmm_writer.so $TARGET
+mv $HISENSEDIR/libnvmmlite.so $TARGET
+mv $HISENSEDIR/libnvmmlite_audio.so $TARGET
+mv $HISENSEDIR/libnvmmlite_image.so $TARGET
+mv $HISENSEDIR/libnvmmlite_utils.so $TARGET
+mv $HISENSEDIR/libnvmmlite_video.so $TARGET
+mv $HISENSEDIR/libnvodm_dtvtuner.so $TARGET
+mv $HISENSEDIR/libnvodm_hdmi.so $TARGET
+mv $HISENSEDIR/libnvodm_imager.so $TARGET
+mv $HISENSEDIR/libnvodm_misc.so $TARGET
+mv $HISENSEDIR/libnvodm_query.so $TARGET
+mv $HISENSEDIR/libnvomx.so $TARGET
+mv $HISENSEDIR/libnvomxilclient.so $TARGET
+mv $HISENSEDIR/libnvos.so $TARGET
+mv $HISENSEDIR/libnvparser.so $TARGET
+mv $HISENSEDIR/libnvrm.so $TARGET
+mv $HISENSEDIR/libnvrm_graphics.so $TARGET
+mv $HISENSEDIR/libnvsm.so $TARGET
+mv $HISENSEDIR/libnvtvmr.so $TARGET
+mv $HISENSEDIR/libnvwinsys.so $TARGET
+mv $HISENSEDIR/libnvwsi.so $TARGET
+mv $HISENSEDIR/libstagefrighthw.so $TARGET
+mv $HISENSEDIR/libtf_crypto_sst.so $TARGET
+mv $HISENSEDIR/nvavp_os_00001000.bin $TARGET
+mv $HISENSEDIR/nvavp_os_0ff00000.bin $TARGET
+mv $HISENSEDIR/nvavp_os_e0000000.bin $TARGET
+mv $HISENSEDIR/nvavp_os_eff00000.bin $TARGET
+mv $HISENSEDIR/nvavp_vid_ucode_alt.bin $TARGET
+mv $HISENSEDIR/nvcamera.conf $TARGET
+mv $HISENSEDIR/nvram.txt $TARGET
 # WIDEVINE
 TARGET=../../../$OUTVENDOR/widevine/$DEVICE/proprietary
-mv $ASUSDIR/libWVStreamControlAPI_L1.so $TARGET
-mv $ASUSDIR/libdrmdecrypt.so $TARGET
-mv $ASUSDIR/libwvdrm_L1.so $TARGET
+mv $HISENSEDIR/libWVStreamControlAPI_L1.so $TARGET
+mv $HISENSEDIR/libdrmdecrypt.so $TARGET
+mv $HISENSEDIR/libwvdrm_L1.so $TARGET
 #INVENSENSE
 TARGET=../../../$OUTVENDOR/invensense/$DEVICE/proprietary
-mv $ASUSDIR/libinvensense_hal.so $TARGET
-mv $ASUSDIR/libmllite.so $TARGET
-mv $ASUSDIR/libmplmpu.so $TARGET
+mv $HISENSEDIR/libinvensense_hal.so $TARGET
+mv $HISENSEDIR/libmllite.so $TARGET
+mv $HISENSEDIR/libmplmpu.so $TARGET
 #ELAN
 TARGET=../../../$OUTVENDOR/elan/$DEVICE/proprietary
-mv $ASUSDIR/touch_fw.ekt $TARGET
+mv $HISENSEDIR/touch_fw.ekt $TARGET
 #NXP
 TARGET=../../../$OUTVENDOR/nxp/$DEVICE/proprietary
-mv $ASUSDIR/libpn544_fw.so $TARGET
+mv $HISENSEDIR/libpn544_fw.so $TARGET

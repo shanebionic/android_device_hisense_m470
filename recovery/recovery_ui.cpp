@@ -34,9 +34,9 @@ const char* ITEMS[] = { "reboot system now",
                         "wipe cache partition",
                         NULL };
 
-class GrouperUI : public ScreenRecoveryUI {
+class m470UI : public ScreenRecoveryUI {
   public:
-    GrouperUI() :
+    m470UI() :
         consecutive_power_keys(0) {
     }
 
@@ -60,10 +60,10 @@ class GrouperUI : public ScreenRecoveryUI {
 };
 
 
-class GrouperDevice : public Device {
+class m470Device : public Device {
   public:
-    GrouperDevice() :
-        ui(new GrouperUI) {
+    m470Device() :
+        ui(new m470UI) {
     }
 
     RecoveryUI* GetUI() { return ui; }
@@ -105,5 +105,5 @@ class GrouperDevice : public Device {
 };
 
 Device* make_device() {
-    return new GrouperDevice;
+    return new m470Device;
 }

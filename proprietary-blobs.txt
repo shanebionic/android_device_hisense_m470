@@ -34,8 +34,8 @@
 /system/lib/hw/gps.tegra3.so
 /system/lib/hw/gralloc.tegra3.so
 /system/lib/hw/hwcomposer.tegra3.so
-/system/lib/hw/keystore.grouper.so
-/system/lib/hw/sensors.grouper.so
+/system/lib/hw/keystore.m470.so
+/system/lib/hw/sensors.m470.so
 /system/lib/libardrv_dynamic.so
 /system/lib/libcgdrv.so
 /system/lib/libdrmdecrypt.so

@@ -30,7 +30,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SHARED_LIBRARIES := liblog
 
-LOCAL_MODULE := lights.grouper
+LOCAL_MODULE := lights.m470
 
 include $(BUILD_SHARED_LIBRARY)
 

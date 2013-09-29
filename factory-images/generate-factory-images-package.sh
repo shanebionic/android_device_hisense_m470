@@ -37,8 +37,8 @@
 
 source ../../../common/clear-factory-images-variables.sh
 BUILD=527662
-DEVICE=grouper
-PRODUCT=nakasi
+DEVICE=m470
+PRODUCT=sero7pro
 VERSION=jop40c
 SRCPREFIX=signed-
 BOOTLOADERFILE=bootloader.bin

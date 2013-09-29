@@ -26,6 +26,11 @@
             android:primary="true"
             android:emulated="true"
             android:mtpReserve="100" />
+    <!-- external sd card -->
+    <storage android:mountPoint="/storage/sdcard1"
+            android:storageDescription="@string/storage_external"
+            android:primary="true"
+            android:removable="true" />
     <!-- external USB OTG storage -->
     <storage android:mountPoint="/storage/usbdisk"
             android:storageDescription="@string/storage_usb"

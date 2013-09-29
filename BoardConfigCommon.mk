@@ -24,7 +24,7 @@
 # needed for BP-flashing updater extensions
 
 # Default value, if not overridden else where.
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/grouper/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
 TARGET_BOARD_PLATFORM := tegra3
 TARGET_TEGRA_VERSION := t30
@@ -49,10 +49,10 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE           := bcmdhd
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
+WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/bcm4330/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin"
 
 TARGET_BOOTLOADER_BOARD_NAME := grouper
 TARGET_NO_BOOTLOADER := true
@@ -66,7 +66,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/asus/grouper/egl.cfg
+BOARD_EGL_CFG := device/hisense/m470/egl.cfg
 
 ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
 # needed for source compilation of nvidia libraries
@@ -82,11 +82,11 @@ BOARD_USES_GROUPER_MODULES := true
 # Required for CWM
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_KERNEL_SOURCE := kernel/asus/grouper
-TARGET_KERNEL_CONFIG := cyanogenmod_grouper_defconfig
+#TARGET_KERNEL_SOURCE := kernel/asus/grouper
+#TARGET_KERNEL_CONFIG := cyanogenmod_grouper_defconfig
 
 BOARD_SEPOLICY_DIRS += \
-	device/asus/grouper/sepolicy
+	device/hisense/m470/sepolicy
 
 BOARD_SEPOLICY_UNION += \
 	file_contexts \

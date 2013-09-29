@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=grouper
-MANUFACTURER=asus
+DEVICE=m470
+MANUFACTURER=hisense
 
 BASE=../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 mkdir -p $BASE

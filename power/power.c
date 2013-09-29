@@ -19,7 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define LOG_TAG "Grouper PowerHAL"
+#define LOG_TAG "m470 PowerHAL"
 #include <utils/Log.h>
 
 #include <hardware/hardware.h>
@@ -50,7 +50,7 @@ static void sysfs_write(char *path, char *s)
     close(fd);
 }
 
-static void grouper_power_init(struct power_module *module)
+static void m470_power_init(struct power_module *module)
 {
     /*
      * cpufreq interactive governor: timer 20ms, min sample 100ms,
@@ -69,7 +69,7 @@ static void grouper_power_init(struct power_module *module)
 		"1");
 }
 
-static void grouper_power_set_interactive(struct power_module *module, int on)
+static void m470_power_set_interactive(struct power_module *module, int on)
 {
     /*
      * Lower maximum frequency when screen is off.  CPU 0 and 1 share a
@@ -87,7 +87,7 @@ static void grouper_power_set_interactive(struct power_module *module, int on)
 
 }
 
-static void grouper_power_hint(struct power_module *module, power_hint_t hint,
+static void m470_power_hint(struct power_module *module, power_hint_t hint,
                             void *data)
 {
     char buf[80];
@@ -112,12 +112,12 @@ struct power_module HAL_MODULE_INFO_SYM = {
         .module_api_version = POWER_MODULE_API_VERSION_0_2,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
-        .name = "Grouper Power HAL",
+        .name = "SERO 7 PRO Power HAL",
         .author = "The Android Open Source Project",
         .methods = &power_module_methods,
     },
 
-    .init = grouper_power_init,
-    .setInteractive = grouper_power_set_interactive,
-    .powerHint = grouper_power_hint,
+    .init = m470_power_init,
+    .setInteractive = m470_power_set_interactive,
+    .powerHint = m470_power_hint,
 };

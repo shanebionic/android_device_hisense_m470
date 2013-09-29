@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME "Nexus 7"
+#define BTM_DEF_LOCAL_NAME "Sero 7 Pro"
 
 // Networking, Capturing, Object Transfer
 // MAJOR CLASS: COMPUTER

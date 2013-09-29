@@ -31,14 +31,16 @@
 USE_CAMERA_STUB := true
 USE_PROPRIETARY_AUDIO_EXTENSIONS := false
 
-BOARD_LIB_DUMPSTATE := libdumpstate.grouper
+BOARD_LIB_DUMPSTATE := libdumpstate.m470
 
-TARGET_RECOVERY_UI_LIB := librecovery_ui_grouper
+TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 RECOVERY_FSTAB_VERSION := 2
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/asus/grouper
+TARGET_RELEASETOOLS_EXTENSIONS := device/hisense/m470
 
--include vendor/asus/grouper/BoardConfigVendor.mk
-include device/asus/grouper/BoardConfigCommon.mk
+-include vendor/hisense/m470/BoardConfigVendor.mk
+include device/hisense/m470/BoardConfigCommon.mk
 
-TARGET_RECOVERY_FSTAB = device/asus/grouper/fstab.grouper
+TARGET_RECOVERY_FSTAB = device/hisense/m470/fstab.m470
+
+TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel

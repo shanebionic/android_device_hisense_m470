@@ -14,10 +14,24 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  LOCAL_KERNEL := kernel/tegra/arch/arm/boot/zImage
-else
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+# Kernel
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+# Kernel modules
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/kernel/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
+    device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+    device/hisense/m470/prebuilt/kernel/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/gps_drv.ko:system/lib/modules/gps_drv.ko \
+    device/hisense/m470/prebuilt/kernel/modules/lib80211.ko:system/lib/modules/lib80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/mac80211.ko:system/lib/modules/mac80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
+    device/hisense/m470/prebuilt/kernel/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
 endif
 
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
@@ -37,14 +51,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/fstab.grouper:root/fstab.grouper \
-    device/asus/grouper/ueventd.grouper.rc:root/ueventd.grouper.rc \
-    device/asus/grouper/init.grouper.usb.rc:root/init.grouper.usb.rc \
-    device/asus/grouper/gps.conf:system/etc/gps.conf
+    device/hisense/m470/fstab.m470:root/fstab.m470 \
+    device/hisense/m470/ueventd.m470.rc:root/ueventd.m470.rc \
+    device/hisense/m470/init.m470.usb.rc:root/init.m470.usb.rc \
+    device/hisense/m470/gps.conf:system/etc/gps.conf
 
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
 PRODUCT_COPY_FILES += \
-    $(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcm4329.ko
+    $(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcmdhd.ko
 endif
 
 PRODUCT_COPY_FILES += \
@@ -62,15 +76,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
-    device/asus/grouper/raydium_ts.idc:system/usr/idc/raydium_ts.idc \
-    device/asus/grouper/sensor00fn11.idc:system/usr/idc/sensor00fn11.idc \
-    device/asus/grouper/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+    device/hisense/m470/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    device/hisense/m470/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
-    lights.grouper \
-    audio.primary.grouper \
-    power.grouper \
+    lights.m470 \
+    audio.primary.m470 \
+    power.m470 \
     audio.a2dp.default \
     audio.usb.default \
     librs_jni \
@@ -81,27 +93,27 @@ PRODUCT_PACKAGES := \
     com.android.future.usb.accessory
 
 PRODUCT_PACKAGES += \
-    keystore.grouper
+    keystore.m470
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc.grouper \
+    nfc.m470 \
     Nfc \
     Tag \
     com.android.nfc_extras
 
-PRODUCT_CHARACTERISTICS := tablet,nosdcard
+PRODUCT_CHARACTERISTICS := tablet
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/media_profiles.xml:system/etc/media_profiles.xml
+    device/hisense/m470/media_profiles.xml:system/etc/media_profiles.xml
 
 # media codec config xml file
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/media_codecs.xml:system/etc/media_codecs.xml
+    device/hisense/m470/media_codecs.xml:system/etc/media_codecs.xml
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
@@ -109,11 +121,11 @@ PRODUCT_COPY_FILES += \
 
 # audio mixer paths
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/hisense/m470/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # audio policy configuration
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/audio_policy.conf:system/etc/audio_policy.conf
+    device/hisense/m470/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
@@ -122,9 +134,9 @@ PRODUCT_COPY_FILES += \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/asus/grouper/nfcee_access.xml
+    NFCEE_ACCESS_PATH := device/hisense/m470/nfcee_access.xml
 else
-    NFCEE_ACCESS_PATH := device/asus/grouper/nfcee_access_debug.xml
+    NFCEE_ACCESS_PATH := device/hisense/m470/nfcee_access_debug.xml
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml

@@ -44,11 +44,11 @@ then
   ZIP=nakasi-ota-527662.zip
   BUILD=jop40c
 fi # jb-mr1-dev
-ROOTDEVICE=grouper
-DEVICE=grouper
-MANUFACTURER=asus
+ROOTDEVICE=m470
+DEVICE=m470
+MANUFACTURER=hisense
 
-for COMPANY in broadcom elan invensense nvidia nxp widevine # asus trusted_logic
+for COMPANY in broadcom elan invensense nvidia nxp widevine # hisense trusted_logic
 do
   echo Processing files from $COMPANY
   rm -rf tmp
@@ -56,11 +56,11 @@ do
   mkdir -p $FILEDIR
   mkdir -p tmp/vendor/$MANUFACTURER/$ROOTDEVICE
   case $COMPANY in
-  asus)
+  hisense)
     TO_EXTRACT="\
             system/bin/sensors-config \
             system/lib/hw/camera.tegra3.so \
-            system/lib/hw/sensors.grouper.so \
+            system/lib/hw/sensors.m470.so \
             system/lib/libsensors.lightsensor.so \
             system/vendor/lib/drm/libdrmwvmplugin.so \
             system/vendor/lib/libwvm.so \
@@ -154,7 +154,7 @@ do
   trusted_logic)
     TO_EXTRACT="\
             system/bin/tf_daemon \
-            system/lib/hw/keystore.grouper.so \
+            system/lib/hw/keystore.m470.so \
             "
     ;;
   widevine)

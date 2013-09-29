@@ -13,9 +13,9 @@
 # limitations under the License.
 
 ifeq ($(TARGET_ARCH),arm)
-ifneq (,$(filter grouper tilapia, $(TARGET_DEVICE)))
+ifneq (,$(filter m470, $(TARGET_DEVICE)))
 
-# This is a nasty hack. keystore.grouper is Open Source, but it
+# This is a nasty hack. keystore.m470 is Open Source, but it
 # links against a non-Open library, so we can only build it
 # when that library is present.
 ifeq ($(BOARD_HAS_TF_CRYPTO_SST),true)
@@ -24,12 +24,11 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := keystore.grouper
-
+LOCAL_MODULE := keystore.m470
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_SRC_FILES := \
-	keymaster_grouper.cpp
+	keymaster_m470.cpp
 
 LOCAL_C_INCLUDES := \
 	libcore/include \
