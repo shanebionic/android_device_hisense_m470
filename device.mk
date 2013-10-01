@@ -21,9 +21,6 @@ PRODUCT_COPY_FILES := \
     device/hisense/m470/fstab.m470:root/fstab.m470 \
     device/hisense/m470/init.m470.rc:root/init.m470.rc
 
-# inherit from the non-open-source side, if present
-$(call inherit-product-if-exists, vendor/hisense/m470/device-vendor.mk)
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=wifi-only
 
@@ -100,13 +97,13 @@ PRODUCT_PACKAGES := \
     audio.primary.m470 \
     power.m470 \
     audio.a2dp.default \
-#    audio.usb.default \
     librs_jni \
     setup_fs \
     l2ping \
     hcitool \
     bttest \
     com.android.future.usb.accessory
+#    audio.usb.default
 
 PRODUCT_PACKAGES += \
     keystore.m470
@@ -136,7 +133,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 
 # audio mixer paths
 PRODUCT_COPY_FILES += \
@@ -159,6 +156,3 @@ else
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-WIFI_BAND := 802_11_BG
- $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)

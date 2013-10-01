@@ -35,8 +35,6 @@ BOARD_LIB_DUMPSTATE := libdumpstate.m470
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/hisense/m470
 
--include vendor/hisense/m470/BoardConfigVendor.mk
-
 # End Warning
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
@@ -89,14 +87,12 @@ BOARD_EGL_CFG := device/hisense/m470/egl.cfg
 
 ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
 # needed for source compilation of nvidia libraries
--include vendor/nvidia/proprietary_src/build/definitions.mk
--include vendor/nvidia/build/definitions.mk
+include vendor/nvidia/proprietary_src/build/definitions.mk
+include vendor/nvidia/build/definitions.mk
 endif
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
-
-#BOARD_USES_GROUPER_MODULES := true
 
 # Required for CWM
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -130,7 +126,6 @@ BOARD_SEPOLICY_UNION += \
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 TARGET_RECOVERY_FSTAB = device/hisense/m470/fstab.m470
 RECOVERY_FSTAB_VERSION := 2
-TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 
 # USB 
