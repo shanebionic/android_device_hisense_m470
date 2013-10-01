@@ -87,8 +87,8 @@ BOARD_EGL_CFG := device/hisense/m470/egl.cfg
 
 ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
 # needed for source compilation of nvidia libraries
-include vendor/nvidia/proprietary_src/build/definitions.mk
-include vendor/nvidia/build/definitions.mk
+-include vendor/nvidia/proprietary_src/build/definitions.mk
+-include vendor/nvidia/build/definitions.mk
 endif
 
 # Avoid the generation of ldrcc instructions
