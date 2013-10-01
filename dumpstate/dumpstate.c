@@ -18,6 +18,8 @@
 
 void dumpstate_board()
 {
+	dump_file("board revision",
+		"/sys/devices/platform/grouper_misc/grouper_pcbid");
 	dump_file("board gpio status",
 		"/d/gpio");
 	dump_file("soc fuse production mode",
