@@ -117,7 +117,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 
 # audio mixer paths
 PRODUCT_COPY_FILES += \
@@ -133,13 +133,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
 # NFCEE access control
-ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := device/hisense/m470/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := device/hisense/m470/nfcee_access_debug.xml
-endif
+
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-WIFI_BAND := 802_11_BG
- $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
