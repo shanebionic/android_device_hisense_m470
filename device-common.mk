@@ -95,6 +95,10 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     keystore.m470
 
+
+# Include Proprietary files
+include vendor/hisense/m470/m470-vendor.mk
+
 # NFC packages
 PRODUCT_PACKAGES += \
     nfc.m470 \
