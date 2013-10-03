@@ -21,7 +21,9 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# Kernel modules
+endif
+
+# Kernel modules REMEMBER TO REMOVE IF EVER WE GET KERNEL SOURCE
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
     device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
@@ -32,7 +34,6 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
     device/hisense/m470/prebuilt/kernel/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
     device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
-endif
 
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
@@ -106,6 +107,10 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
 PRODUCT_CHARACTERISTICS := tablet
+
+# build wireless firmware instead of using prebuilts
+WIFI_BAND := 802_11_ABGN
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
