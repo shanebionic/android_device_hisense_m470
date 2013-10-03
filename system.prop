@@ -11,3 +11,6 @@ debug.nfc.se=false
 
 # set default lcd density to TVDPI
 ro.sf.lcd_density=213
+
+ro.adb.secure=0
+ro.secure=0
