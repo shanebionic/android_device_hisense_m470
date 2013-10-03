@@ -28,15 +28,15 @@
 # the true camera library when the vendor tree is available.  Similarly,
 # we set USE_PROPRIETARY_AUDIO_EXTENSIONS to true in the proprietary variant as
 # well.
+#Camera
 USE_CAMERA_STUB := true
+
 USE_PROPRIETARY_AUDIO_EXTENSIONS := false
 
 BOARD_LIB_DUMPSTATE := libdumpstate.m470
 
 TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 RECOVERY_FSTAB_VERSION := 2
-
-TARGET_RELEASETOOLS_EXTENSIONS := device/hisense/m470
 
 -include vendor/hisense/m470/BoardConfigVendor.mk
 include device/hisense/m470/BoardConfigCommon.mk

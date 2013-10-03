@@ -80,11 +80,9 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
-    lights.m470 \
     audio.primary.m470 \
-    power.m470 \
     audio.a2dp.default \
-    audio.usb.default \
+    lights.m470 \
     librs_jni \
     setup_fs \
     l2ping \
@@ -97,7 +95,8 @@ PRODUCT_PACKAGES += \
 
 
 # Include Proprietary files
-include vendor/hisense/m470/m470-vendor.mk
+#include vendor/hisense/m470/m470-vendor.mk
+include vendor/asus/grouper/device-vendor.mk
 
 # NFC packages
 PRODUCT_PACKAGES += \

@@ -44,26 +44,29 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Wifi related defines
 WIFI_BAND := 802_11_ABGN
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE           := bcmdhd
-WIFI_DRIVER_MODULE_NAME     := bcmdhd
+WIFI_DRIVER_MODULE_NAME     := "bcmdhd"
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/bcm4330/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin"
-#WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/etc/nvram_4330.txt iface_name=wlan0" 
+WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/etc/nvram_4330.txt iface_name=wlan0"
 
-TARGET_BOOTLOADER_BOARD_NAME := grouper
+# Sensors invensense
+BOARD_USES_GENERIC_INVENSENSE := true
+
 TARGET_NO_BOOTLOADER := true
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
-BOARD_USES_GENERIC_INVENSENSE := false
+BOARD_USES_GENERIC_INVENSENSE := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -71,40 +74,11 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/hisense/m470/egl.cfg
 
-ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
-# needed for source compilation of nvidia libraries
--include vendor/nvidia/proprietary_src/build/definitions.mk
--include vendor/nvidia/build/definitions.mk
-endif
-
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
-
-#BOARD_USES_GROUPER_MODULES := true
 
 # Required for CWM
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-#TARGET_KERNEL_SOURCE := kernel/asus/grouper
-#TARGET_KERNEL_CONFIG := cyanogenmod_grouper_defconfig
-
 BOARD_SEPOLICY_DIRS += \
 	device/hisense/m470/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	genfs_contexts \
-	app.te \
-	btmacreader.te \
-	device.te \
-	drmserver.te \
-	file.te \
-	gpsd.te \
-	init_shell.te \
-	keystore.te \
-	mediaserver.te \
-	rild.te \
-	sensors_config.te \
-	surfaceflinger.te \
-	system.te \
-	zygote.te
