@@ -39,7 +39,7 @@
 
 #define PCM_CARD 1
 #define PCM_DEVICE 0
-#define PCM_DEVICE_SCO 2
+#define PCM_DEVICE_SCO 0
 
 #define MIXER_CARD 1
 
