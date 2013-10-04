@@ -14,3 +14,7 @@ ro.sf.lcd_density=213
 
 ro.adb.secure=0
 ro.secure=0
+
+# Icera agpsd
+agpsd.lib_path=/system/lib/libagps-brcm4751.so
+agpsd.dev_path=/dev/ttyACM4
