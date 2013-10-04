@@ -96,8 +96,7 @@ PRODUCT_PACKAGES += \
 
 
 # Include Proprietary files
-#include vendor/hisense/m470/m470-vendor.mk
-include vendor/asus/grouper/device-vendor.mk
+include vendor/hisense/m470/device-vendor.mk
 
 # NFC packages
 PRODUCT_PACKAGES += \
