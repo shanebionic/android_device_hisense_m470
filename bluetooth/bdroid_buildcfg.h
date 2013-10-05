@@ -18,14 +18,9 @@
 #define _BDROID_BUILDCFG_H
 
 #define BTM_DEF_LOCAL_NAME "Sero 7 Pro"
-
-// Networking, Capturing, Object Transfer
-// MAJOR CLASS: COMPUTER
-// MINOR CLASS: PALM SIZE PC/PDA
-#define BTA_DM_COD {0x1A, 0x01, 0x14}
-
-#define BTIF_HF_SERVICES (BTA_HSP_SERVICE_MASK)
-#define BTIF_HF_SERVICE_NAMES  { BTIF_HSAG_SERVICE_NAME }
-#define PAN_NAP_DISABLED TRUE
+#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+#define BLE_INCLUDED FALSE
+#define BTA_GATT_INCLUDED FALSE
+#define SMP_INCLUDED FALSE
 
 #endif
