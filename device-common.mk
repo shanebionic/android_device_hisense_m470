@@ -124,7 +124,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
+    device/hisense/m470/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # audio mixer paths
 PRODUCT_COPY_FILES += \
