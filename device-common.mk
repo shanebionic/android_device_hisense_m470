@@ -102,7 +102,7 @@ include vendor/hisense/m470/device-vendor.mk
 # NFC packages
 PRODUCT_PACKAGES += \
     nfc.m470 \
-    Nfc \
+    NfcNci \
     Tag \
     com.android.nfc_extras
 
