@@ -19,7 +19,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 PRODUCT_COPY_FILES := \
     device/hisense/m470/fstab.m470:root/fstab.m470 \
-    device/hisense/m470/init.m470.rc:root/init.m470.rc
+    device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc
 
 # the actual meat of the device-specific product definition
 $(call inherit-product, device/hisense/m470/device-common.mk)
