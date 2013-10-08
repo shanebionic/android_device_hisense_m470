@@ -83,7 +83,6 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
-    audio.primary.m470 \
     audio.a2dp.default \
     lights.m470 \
     librs_jni \
@@ -103,6 +102,8 @@ include vendor/hisense/m470/device-vendor.mk
 # NFC packages
 PRODUCT_PACKAGES += \
     NfcNci \
+    libnfc \
+    libnfc_jni \
     Tag \
     com.android.nfc_extras
 
@@ -128,9 +129,9 @@ PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
     device/hisense/m470/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
-# audio mixer paths
+# nvaudio.conf
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/hisense/m470/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
 
 # audio policy configuration
 PRODUCT_COPY_FILES += \
