@@ -129,6 +129,26 @@ PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
     device/hisense/m470/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
+# ALSA Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/alsa.conf:system/usr/share/alsa/alsa.conf
+
 # nvaudio.conf
 PRODUCT_COPY_FILES += \
     device/hisense/m470/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
