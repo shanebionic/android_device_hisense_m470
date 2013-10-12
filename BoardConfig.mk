@@ -29,9 +29,9 @@
 # we set USE_PROPRIETARY_AUDIO_EXTENSIONS to true in the proprietary variant as
 # well.
 #Camera
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
-USE_PROPRIETARY_AUDIO_EXTENSIONS := false
+USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 
 BOARD_LIB_DUMPSTATE := libdumpstate.m470
 

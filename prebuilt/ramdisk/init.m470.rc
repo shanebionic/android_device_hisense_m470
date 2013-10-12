@@ -231,6 +231,10 @@ insmod /system/lib/modules/inv_mpu_ak8975.ko
     symlink /system/vendor/firmware/app /data/rfs/app
     symlink /mnt/modem/data/factory /data/rfs/data/factory
 
+# Hardware tunables
+    chown root system /sys/class/graphics/fb0/device/smartdimmer/enable
+    chmod 0664 /sys/class/graphics/fb0/device/smartdimmer/enable 
+
 # BB mapping symbolic name to the logging ttyACM port
     symlink /dev/ttyACM3 /dev/log_modem
     chmod 775 /data/rfs/data/debug
