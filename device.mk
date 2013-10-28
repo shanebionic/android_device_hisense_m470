@@ -14,21 +14,176 @@
 # limitations under the License.
 #
 
+# Kernel
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+endif
+
+# Kernel modules REMEMBER TO REMOVE IF EVER WE GET KERNEL SOURCE
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/kernel/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
+    device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+    device/hisense/m470/prebuilt/kernel/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/gps_drv.ko:system/lib/modules/gps_drv.ko \
+    device/hisense/m470/prebuilt/kernel/modules/lib80211.ko:system/lib/modules/lib80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/mac80211.ko:system/lib/modules/mac80211.ko \
+    device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
+    device/hisense/m470/prebuilt/kernel/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
+
+PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := tvdpi
+
+
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.carrier=wifi-only
+    ro.carrier=wifi-only \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=15 \
+    tf.enable=y \
+    drm.service.enabled=true
 
-PRODUCT_COPY_FILES := \
-    device/hisense/m470/fstab.m470:root/fstab.m470 \
-    device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
-# the actual meat of the device-specific product definition
-$(call inherit-product, device/hisense/m470/device-common.mk)
+include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
-# inherit from the non-open-source side, if present
-$(call inherit-product-if-exists, vendor/hisense/m470/device-vendor.mk)
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
+    device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
+    device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
+    device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
+    device/hisense/m470/prebuilt/ramdisk/init.rc:root/init.rc
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=wifi-only
+ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcmdhd.ko
+endif
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+
+PRODUCT_PACKAGES := \
+    audio.a2dp.default \
+    lights.m470 \
+    librs_jni \
+    setup_fs \
+    l2ping \
+    hcitool \
+    bttest \
+    com.android.future.usb.accessory
+
+PRODUCT_PACKAGES += \
+    keystore.m470
+
+
+# Include Proprietary files
+include vendor/hisense/m470/device-vendor.mk
+
+#$(call inherit-product-if-exists, vendor/hisense/m470/device-vendor.mk)
+
+# NFC packages
+PRODUCT_PACKAGES += \
+    NfcNci \
+    libnfc \
+    libnfc_jni \
+    Tag \
+    com.android.nfc_extras
+
+PRODUCT_CHARACTERISTICS := tablet
+
+# build wireless firmware instead of using prebuilts
+WIFI_BAND := 802_11_ABGN
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Bluetooth config file
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
+    device/hisense/m470/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
+# ALSA Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+    $(LOCAL_PATH)/prebuilt/alsa/alsa.conf:system/usr/share/alsa/alsa.conf
+
+# etc
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
+    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
+    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
+    device/hisense/m470/prebuilt/etc/broadcom/bt/testmode.sh:system/etc/broadcom/bt/testmode.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/gps/testgps.sh:system/etc/broadcom/gps/testgps.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/gps/testmode.sh:system/etc/broadcom/gps/testmode.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/inswifi.sh:system/etc/broadcom/wifi/inswifi.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/rmwifi.sh:system/etc/broadcom/wifi/rmwifi.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/rx.sh:system/etc/broadcom/wifi/rx.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/rxn.sh:system/etc/broadcom/wifi/rxn.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/stop.sh:system/etc/broadcom/wifi/stop.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txa.sh:system/etc/broadcom/wifi/txa.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txa_fast.sh:system/etc/broadcom/wifi/txa_fast.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txbg.sh:system/etc/broadcom/wifi/txbg.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txbg_fast.sh:system/etc/broadcom/wifi/txbg_fast.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txn.sh:system/etc/broadcom/wifi/txn.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txn5g.sh:system/etc/broadcom/wifi/txn5g.sh \
+    device/hisense/m470/prebuilt/etc/broadcom/wifi/txunmod.sh:system/etc/broadcom/wifi/txunmod.sh \
+    device/hisense/m470/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
+    device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
+    device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/hisense/m470/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
+
+# NFC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
+
+# NFCEE access control
+    NFCEE_ACCESS_PATH := device/hisense/m470/prebuilt/etc/nfcee_access.xml
+
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
