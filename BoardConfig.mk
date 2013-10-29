@@ -39,7 +39,7 @@ RECOVERY_FSTAB_VERSION := 2
 -include vendor/hisense/m470/BoardConfigVendor.mk
 
 TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
-
+BOARD_RECOVERY_SWIPE := true
 TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 
 # Fix camera and load all nvlibs properly
