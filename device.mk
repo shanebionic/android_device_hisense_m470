@@ -15,13 +15,11 @@
 #
 
 # Kernel
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
+
+LOCAL_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-endif
 
 # Kernel modules REMEMBER TO REMOVE IF EVER WE GET KERNEL SOURCE
 PRODUCT_COPY_FILES += \
