@@ -54,8 +54,7 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
     device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
-    device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
-    device/hisense/m470/prebuilt/ramdisk/init.rc:root/init.rc
+    device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc
 
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
 PRODUCT_COPY_FILES += \
@@ -119,7 +118,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
     device/hisense/m470/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # ALSA Config
@@ -170,6 +168,12 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
     device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/hisense/m470/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
+
+
+# Wifi
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf
 
 # NFC
 PRODUCT_COPY_FILES += \

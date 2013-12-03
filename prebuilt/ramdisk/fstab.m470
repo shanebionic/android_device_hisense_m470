@@ -14,5 +14,5 @@
 /dev/block/platform/sdhci-tegra.3/by-name/MDM           /mnt/modem          ext4      defaults                                                      defaults
 /dev/block/platform/sdhci-tegra.3/by-name/THD           /thirdparty         ext4      rw                                                            defaults
 
-/devices/platform/tegra-ehci				/storage/usbdisk    vfat      defaults          voldmanaged=usbdisk:auto
-/devices/platform/sdhci-tegra.0/mmc_host/mmc1           /storage/sdcard1    vfat      defaults          voldmanaged=sdcard:auto
+/devices/platform/tegra-ehci				auto    auto      defaults          voldmanaged=usbdisk:auto
+/devices/platform/sdhci-tegra.0/mmc_host/mmc1           auto    auto      defaults          voldmanaged=sdcard1:auto
