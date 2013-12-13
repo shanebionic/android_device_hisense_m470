@@ -185,7 +185,7 @@ PRODUCT_COPY_FILES += \
     NFCEE_ACCESS_PATH := device/hisense/m470/prebuilt/etc/nfcee_access.xml
 
 PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml 
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
