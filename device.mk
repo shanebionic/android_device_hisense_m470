@@ -55,7 +55,8 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
     device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
-    device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc
+    device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
+    device/hisense/m470/prebuilt/ramdisk/twrp.fstab:recovery/root/etc/twrp.fstab
 
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
 PRODUCT_COPY_FILES += \

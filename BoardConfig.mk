@@ -85,8 +85,22 @@ RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
 BOARD_RECOVERY_SWIPE := true
 
+# Twrp
+DEVICE_RESOLUTION := 800x1280
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_NO_USB_STORAGE := true
+TW_INCLUDE_JB_CRYPTO := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+# Hardware overlay
 BOARD_HARDWARE_CLASS := device/hisense/m470/cmhw/
 
+# Selinux
 BOARD_SEPOLICY_DIRS := \
         device/hisense/m470/sepolicy
 
