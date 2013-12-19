@@ -38,7 +38,7 @@ BOARD_LIB_DUMPSTATE := libdumpstate.m470
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE :=
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
 TARGET_KERNEL_CONFIG := taktik_m470_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
@@ -87,3 +87,22 @@ TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
 BOARD_RECOVERY_SWIPE := true
 
 BOARD_HARDWARE_CLASS := device/hisense/m470/cmhw/
+
+BOARD_SEPOLICY_DIRS := \
+        device/hisense/m470/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+        file_contexts \
+        genfs_contexts \
+        app.te \
+        btmacreader.te \
+        device.te \
+        drmserver.te \
+        init_shell.te \
+        file.te \
+        rild.te \
+        sensors_config.te \
+        shell.te \
+        surfaceflinger.te \
+        system.te \
+        zygote.te
