@@ -38,10 +38,10 @@ BOARD_LIB_DUMPSTATE := libdumpstate.m470
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.selinux=enforce
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
-TARGET_KERNEL_CONFIG := taktik_m470_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
+TARGET_KERNEL_CONFIG := m470_defconfig
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth

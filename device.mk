@@ -42,7 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.carrier=wifi-only \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
-    tf.enable=y \
+    tf.enable=n \
     drm.service.enabled=true
 
 # Set default USB interface
@@ -53,9 +53,10 @@ include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
-    device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
+    device/hisense/m470/prebuilt/ramdisk/init.tf.rc:root/init.tf.rc \
+    device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/twrp.fstab:recovery/root/etc/twrp.fstab
 
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
@@ -146,7 +147,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
+    device/hisense/m470/prebuilt/etc/dbus.conf:system/etc/dbus.conf \
+    device/hisense/m470/prebuilt/etc/enctune.conf:system/etc/enctune.conf \
     device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/model_frontal.xml:system/etc/model_frontal.xml \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \

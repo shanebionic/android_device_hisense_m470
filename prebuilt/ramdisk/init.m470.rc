@@ -373,6 +373,10 @@ service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
     socket gps seqpacket 0660 gps system
     socket rilgps.socket seqpacket 0660 gps system
     group system
+  # inet sdcard_rw sdcard_r
+
+# Prepare TF service
+import init.tf.rc
 
 # create filesystems if necessary
 service setup_fs /system/bin/setup_fs \

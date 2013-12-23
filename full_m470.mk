@@ -31,7 +31,6 @@ PRODUCT_DEVICE := m470
 PRODUCT_BRAND := Hisense
 # Don't restrict vendor folder
 PRODUCT_RESTRICT_VENDOR_FILES := false
-PRODUCT_MODEL := AOSP on Sero7pro
+PRODUCT_MODEL := Sero7pro
 
 #Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=m470 BUILD_FINGERPRINT="google/nakasi/grouper:4.3/JWR66V/573038:user/release-keys" PRIVATE_BUILD_DESC="nakasi-user 4.3 JWR66V 573038 release-keys"

@@ -13,6 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <binder/IPCThreadState.h>
+
+#include <binder/Binder.h>
+#include <binder/BpBinder.h>
+#include <binder/TextOutput.h>
+
+#include <cutils/sched_policy.h>
+#include <utils/Debug.h>
+#include <utils/Log.h>
+#include <utils/threads.h>
+
+#include <private/binder/binder_module.h>
+#include <private/binder/Static.h>
+
 #include <errno.h>
 #include <string.h>
 #include <stdint.h>
@@ -45,6 +59,7 @@
 /** The current stored key version. */
 const static uint32_t KEY_VERSION = 1;
 
+int Uid = Binder.getCallingUid();
 
 struct EVP_PKEY_Delete {
     void operator()(EVP_PKEY* p) const {
