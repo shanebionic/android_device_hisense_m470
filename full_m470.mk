@@ -31,6 +31,6 @@ PRODUCT_DEVICE := m470
 PRODUCT_BRAND := Hisense
 # Don't restrict vendor folder
 PRODUCT_RESTRICT_VENDOR_FILES := false
-PRODUCT_MODEL := Sero7pro
+PRODUCT_MODEL := AOSP on Sero7pro
 
 #Set build fingerprint / ID / Product Name ect.

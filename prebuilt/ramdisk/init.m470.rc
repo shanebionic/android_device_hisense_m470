@@ -19,6 +19,15 @@ on init
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard1 /sdcard2
     symlink /storage/sdcard1 /mnt/sdcard2
+
+    # USB OTG support
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0700 root root
+    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /mnt/usbdisk /usbdisk
+
+    EXPORT SECONDARY_STORAGE /storage/usbdisk
+
     mkdir /thirdparty 0666 system system
 
     mount debugfs debugfs /sys/kernel/debug
@@ -394,6 +403,10 @@ service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emul
 
 # FUSE sdcard daemon for rich permissions (runs as media_rw)
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
