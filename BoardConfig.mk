@@ -13,8 +13,13 @@
 # limitations under the License.
 
 
-TARGET_BOARD_PLATFORM := tegra3
-TARGET_TEGRA_VERSION := t30
+# TARGET_BOARD_PLATFORM := tegra3
+# TARGET_TEGRA_VERSION := t30
+TARGET_BOARD_PLATFORM := tegra
+TARGET_NO_RADIOIMAGE := true
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := enterprise
+
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -24,8 +29,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_USE_O3 := true
 
-TARGET_NO_BOOTLOADER := true
-
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
@@ -34,14 +37,16 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 681574400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6567231488
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-BOARD_LIB_DUMPSTATE := libdumpstate.m470
+BOARD_LIB_DUMPSTATE := \
+          libdumpstate.m470 \
+          libhealthd.m470
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.selinux=enforce
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
-TARGET_KERNEL_CONFIG := taktik_m470_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
+TARGET_KERNEL_CONFIG := m470_defconfig
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
@@ -60,7 +65,7 @@ WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/etc/nvram.txt iface_name=wlan0"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/etc/nvram_4330.txt iface_name=wlan0"
 
 # Sensors invensense
 BOARD_USES_GENERIC_INVENSENSE := false
@@ -68,15 +73,16 @@ BOARD_USES_GENERIC_INVENSENSE := false
 # Audio Options
 USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := false
-BOARD_USES_TINY_AUDIO_HW := false
+BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_TINY_AUDIO_HW := true
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 
 # Video
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/hisense/m470/prebuilt/lib/egl/egl.cfg
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+BOARD_HAVE_PIXEL_FORMAT_INFO := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true

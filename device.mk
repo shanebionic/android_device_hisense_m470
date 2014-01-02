@@ -42,7 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.carrier=wifi-only \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
-    tf.enable=y \
+    tf.enable=n \
     drm.service.enabled=true
 
 # Set default USB interface
@@ -53,10 +53,11 @@ include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
-    device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
-    device/hisense/m470/prebuilt/ramdisk/twrp.fstab:recovery/root/etc/twrp.fstab
+    device/hisense/m470/prebuilt/ramdisk/init.tf.rc:root/init.tf.rc \
+    device/hisense/m470/prebuilt/ramdisk/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/hisense/m470/prebuilt/ramdisk/ueventd.m470.rc:root/ueventd.m470.rc
 
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
 PRODUCT_COPY_FILES += \
@@ -85,13 +86,14 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES := \
     audio.a2dp.default \
+    audio.usb.default \
+    bttest \
+    com.android.future.usb.accessory \
+    hcitool \
+    l2ping \
     lights.m470 \
     librs_jni \
     setup_fs \
-    l2ping \
-    hcitool \
-    bttest \
-    com.android.future.usb.accessory
 
 PRODUCT_PACKAGES += \
     keystore.m470
@@ -104,10 +106,10 @@ include vendor/hisense/m470/device-vendor.mk
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.m470 \
+    com.android.nfc_extras \
     NfcNci \
+    nfc_nci.m470 \
     Tag \
-    com.android.nfc_extras
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -124,32 +126,40 @@ PRODUCT_COPY_FILES += \
 
 # ALSA Config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
-    $(LOCAL_PATH)/prebuilt/alsa/alsa.conf:system/usr/share/alsa/alsa.conf
+   $(LOCAL_PATH)/prebuilt/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+   $(LOCAL_PATH)/prebuilt/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 # etc
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
-    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/audioConfig_qvoice_icera_pc400.xml:system/etc/audioConfig_qvoice_icera_pc400.xml \
+    device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/hisense/m470/prebuilt/etc/dbus.conf:system/etc/dbus.conf \
+    device/hisense/m470/prebuilt/etc/enctune.conf:system/etc/enctune.conf \
+    device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
+    device/hisense/m470/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/hisense/m470/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/hisense/m470/prebuilt/etc/model_frontal.xml:system/etc/model_frontal.xml \
+    device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
-    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
+    device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/hisense/m470/prebuilt/etc/broadcom/bt/testmode.sh:system/etc/broadcom/bt/testmode.sh \
     device/hisense/m470/prebuilt/etc/broadcom/gps/testgps.sh:system/etc/broadcom/gps/testgps.sh \
     device/hisense/m470/prebuilt/etc/broadcom/gps/testmode.sh:system/etc/broadcom/gps/testmode.sh \
@@ -165,13 +175,8 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/broadcom/wifi/txn.sh:system/etc/broadcom/wifi/txn.sh \
     device/hisense/m470/prebuilt/etc/broadcom/wifi/txn5g.sh:system/etc/broadcom/wifi/txn5g.sh \
     device/hisense/m470/prebuilt/etc/broadcom/wifi/txunmod.sh:system/etc/broadcom/wifi/txunmod.sh \
-    device/hisense/m470/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
-    device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
-    device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/hisense/m470/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
-
-
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml
+   
 # Wifi
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
