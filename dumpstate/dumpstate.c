@@ -22,13 +22,10 @@ void dumpstate_board()
 		"/d/gpio");
 	dump_file("soc fuse production mode",
 		"/sys/firmware/fuse/odm_production_mode");
+	dump_file("secure_boot_key",
+		"/sys/firmware/fuse/secure_boot_key");
 	dump_file("emmc revision",
 		"/sys/devices/platform/sdhci-tegra.3/mmc_host/mmc0/mmc0:0001/"
 		"prv");
-	dump_file("emmc capacity",
-		"/sys/devices/platform/sdhci-tegra.3/mmc_host/mmc0/mmc0:0001/"
-		"sec_count");
 	dump_file("wlan", "/sys/module/bcmdhd/parameters/info_string");
-	dump_file("touch panel vendor and firmware version",
-		"/sys/class/switch/touch/name");
 };

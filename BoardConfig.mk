@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# TARGET_BOARD_PLATFORM := tegra3
-# TARGET_TEGRA_VERSION := t30
-TARGET_BOARD_PLATFORM := tegra
+# Board naming
 TARGET_NO_RADIOIMAGE := true
-TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := enterprise
+TARGET_NO_BOOTLOADER := true
 
+TARGET_BOARD_PLATFORM := tegra3
+TARGET_TEGRA_VERSION := t30
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -29,6 +28,10 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_USE_O3 := true
 
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+ARCH_ARM_USE_NON_NEON_MEMCPY := true
+
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
@@ -37,21 +40,24 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 681574400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6567231488
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-BOARD_LIB_DUMPSTATE := \
-          libdumpstate.m470 \
-          libhealthd.m470
+BOARD_HAL_STATIC_LIBRARIES := \
+    libdumpstate.m470
+
+#DRM
+LOCAL_CFLAGS += -DENABLE_PASSTHRU_DECRYPTION
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 BOARD_KERNEL_CMDLINE := androidboot.selinux=enforce
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
 TARGET_KERNEL_CONFIG := m470_defconfig
-# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
+
 
 # Wireless
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -81,8 +87,10 @@ BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/hisense/m470/prebuilt/lib/egl/egl.cfg
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 BOARD_HAVE_PIXEL_FORMAT_INFO := true
+
+#Camera options
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
