@@ -1,0 +1,18 @@
+#!/system/bin/sh
+# write wifi mac address
+
+
+
+if [ -a /data/misc/wifi/nvram.txt ]; then
+   echo "/data/misc/nvram.txt exists skipping"
+   exit
+fi
+cp /system/etc/nvram.txt /data/misc/wifi/nvram.txt
+echo macaddr=$(cat /sys/devices/platform/bck/wifi_addr) >> /data/misc/wifi/nvram.txt
+echo "over_ride=1" >> /data/misc/wifi/nvram.txt
+mount -o remount,rw /system
+chmod 0644 /data/misc/wifi/nvram.txt
+ln -s /data/misc/wifi/nvram.txt /system/etc/nvram_4330.txt
+mount -o remount,ro /system
+exit
+

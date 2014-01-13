@@ -34,6 +34,9 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
 endif
 
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/kernel/modules/dave_m470_defconfig:system/lib/modules/3.1.10/.config
+
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
@@ -94,7 +97,6 @@ PRODUCT_PACKAGES := \
     libaudioutils \
     libdrmpassthruplugin \
     libdumpstate.m470 \
-    libhealthd.m470 \
     librs_jni \
     lights.m470 \
     MockDRMCryptoPlugin \
@@ -159,9 +161,14 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/model_frontal.xml:system/etc/model_frontal.xml \
     device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
-    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
+    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
     device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
+    device/hisense/m470/prebuilt/etc/init.d/50selinuxrelabel:system/etc/init.s/50selinuxrelabel \
+    device/hisense/m470/prebuilt/etc/init.d/70wifimacwriter:system/etc/init.d/70wifimacwriter \
+    device/hisense/m470/prebuilt/etc/init.d/90userinit:system/etc/init.d/90userinit
+    
 
 
 # Wifi

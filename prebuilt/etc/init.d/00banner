@@ -1,0 +1,12 @@
+#!/system/bin/sh
+#
+# Print startup info
+#
+L="log -p i -t cm"
+
+$L "                                        //   / /";
+$L "  __  ___  ___     / ___   __  ___ ( ) //__ / / ";
+$L "   / /   //   ) ) //\ \     / /   / / //__  /   ";
+$L "  / /   //   / / //  \ \   / /   / / //   \ \   ";
+$L " / /   ((___( ( //    \ \ / /   / / //     \ \  ";
+$L "Welcome to taktiK `getprop ro.build.version.release` / taktiK-`getprop ro.tt.version`";

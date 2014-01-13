@@ -9,7 +9,7 @@ boardflags=0x0080200
 nocrc=1
 xtalfreq=26000
 boardnum=22
-macaddr=00:90:4c:c5:12:38
+# macaddr=00:90:4c:c5:12:38
 
 btc_params6=31
 btc_params8=25000
