@@ -163,7 +163,8 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
     device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml 
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/init.d/70wifimacwriter:system/etc/init.d/70wifimacwriter
 
 # Wifi
 PRODUCT_COPY_FILES += \

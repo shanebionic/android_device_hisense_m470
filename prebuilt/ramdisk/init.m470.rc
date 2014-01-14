@@ -91,7 +91,6 @@ on boot
     setprop ro.nfc.port "I2C"
     chmod 0600 /dev/bcm2079x
     chown nfc nfc /dev/bcm2079x
-
 #changed for NFC storage path, wangbenjian
     mkdir /data/nfc 770 nfc nfc
     mkdir /data/nfc/param 770 nfc nfc
@@ -99,8 +98,7 @@ on boot
 # Load wifi driver
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/bcmdhd.ko
-    setprop wifi.supplicant p2p_supplicant
-
+    setprop wifi.supplicant wpa_supplicant
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
 
@@ -367,13 +365,6 @@ service btmacwriter /system/bin/btmacwriter
     class main
     user bluetooth
     group bluetooth net_bt_admin
-    oneshot
-
-# wifimacaddresswriter - set the wifi macaddress
-service wifimacwriter /system/bin/logwrapper /system/bin/wifimacwriter.sh
-    class main
-    user root
-    group root
     oneshot
 
 #BCM

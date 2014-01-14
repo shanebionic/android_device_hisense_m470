@@ -26,11 +26,11 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
-TARGET_USE_O3 := true
+# TARGET_USE_O3 := true
 
-ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
-ARCH_ARM_USE_NON_NEON_MEMCPY := true
+# ARCH_ARM_HAVE_TLS_REGISTER := true
+# ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+# ARCH_ARM_USE_NON_NEON_MEMCPY := true
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -50,7 +50,7 @@ LOCAL_CFLAGS += -DENABLE_PASSTHRU_DECRYPTION
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 BOARD_KERNEL_CMDLINE := androidboot.selinux=enforce
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
-TARGET_KERNEL_CONFIG := dave_m470_defconfig
+TARGET_KERNEL_CONFIG := m470_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 # Bluetooth
@@ -71,16 +71,16 @@ BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-# WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/etc/nvram_4330.txt iface_name=wlan0"
+# WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/data/misc/wifi/nvram.txt iface_name=wlan0"
 
 # Sensors invensense
 BOARD_USES_GENERIC_INVENSENSE := false
 
 # Audio Options
-USE_PROPRIETARY_AUDIO_EXTENSIONS := true
+# USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := true
-BOARD_USES_TINY_AUDIO_HW := true
+# BOARD_USES_ALSA_AUDIO := true
+# BOARD_USES_TINY_AUDIO_HW := true
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 
 # Video
