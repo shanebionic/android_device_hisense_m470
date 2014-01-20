@@ -7,7 +7,7 @@ if [ -a /data/misc/wifi/nvram_4330.txt ]; then
    echo "wifimacwriter /data/misc/wifi/nvram_4330.txt exists skipping"
    exit
 fi
-cp /system/etc/nvram.txt /data/misc/wifi/nvram_4330.txt
+cp /system/etc/nvram_4330.txt /data/misc/wifi/nvram_4330.txt
 echo macaddr=$(cat /sys/devices/platform/bck/wifi_addr) >> /data/misc/wifi/nvram_4330.txt
 echo "over_ride=1" >> /data/misc/wifi/nvram_4330.txt
 chmod 0644 /data/misc/wifi/nvram_4330.txt
