@@ -42,11 +42,14 @@ PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
+    ro.streaming.video.drs=true \
+    ro.product.hasphonestorage=1 \
+    persist.sys.timezone=America/New_York \
+    ro.com.google.gmsversion=4.4.2 \
     ro.carrier=wifi-only \
-    wifi.interface=wlan0 \
+    drm.service.enabled=true \
     wifi.supplicant_scan_interval=15 \
-    tf.enable=true \
-    drm.service.enabled=true
+    tf.enable=true
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -88,20 +91,22 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
-    audio.a2dp.default \
     audio.r_submix.default \
-    bttest \
+    AutoParts_tfp \
+    blobpack_tfp \
+    com.cyanogenmod.asusdec \
     com.android.future.usb.accessory \
     hcitool \
     l2ping \
-    libaudioutils \
-    libdrmpassthruplugin \
+    libasusdec_jni \
     libdumpstate.m470 \
     librs_jni \
     lights.m470 \
-    MockDRMCryptoPlugin \
-    setup_fs
-
+    make_ext4fs \
+    mischelp \
+    setup_fs \
+    tinymix \
+    wifimacwriter
 
 # Include Proprietary files
 include vendor/hisense/m470/device-vendor.mk
@@ -163,8 +168,7 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
     device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-    device/hisense/m470/prebuilt/etc/init.d/70wifimacwriter:system/etc/init.d/70wifimacwriter
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -186,4 +190,10 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
 
+# Build characteristics setting 
+PRODUCT_CHARACTERISTICS := tablet
+
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
+
+# Inherit tablet dalvik settings
+$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)

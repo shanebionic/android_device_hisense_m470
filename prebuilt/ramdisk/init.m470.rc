@@ -367,6 +367,10 @@ service btmacwriter /system/bin/btmacwriter
     group bluetooth net_bt_admin
     oneshot
 
+service wifimacwriter /system/bin/logwrapper /system/bin/wifimacwriter
+    class late_start
+    oneshot
+
 #BCM
 service hciattach /system/bin/brcm_patchram_plus -d --enable_hci --tosleep 50000 --baudrate 3000000 --patchram /etc/firmware/bcm4330.hcd --enable_lpm /dev/ttyHS2
     class main
@@ -376,7 +380,7 @@ service hciattach /system/bin/brcm_patchram_plus -d --enable_hci --tosleep 50000
     oneshot
 
 # GPS daemon
-service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
+service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsconfig.xml
     user gps
     class late_start
     socket gps seqpacket 0660 gps system
