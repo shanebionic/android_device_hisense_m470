@@ -34,22 +34,16 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
 endif
 
-PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/kernel/modules/dave_m470_defconfig:system/lib/modules/3.1.10/.config
-
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.streaming.video.drs=true \
-    ro.product.hasphonestorage=1 \
-    persist.sys.timezone=America/New_York \
-    ro.com.google.gmsversion=4.4.2 \
     ro.carrier=wifi-only \
-    drm.service.enabled=true \
+    wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
-    tf.enable=true
+    tf.enable=true \
+    drm.service.enabled=true
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -91,22 +85,20 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
+    audio.a2dp.default \
     audio.r_submix.default \
-    AutoParts_tfp \
-    blobpack_tfp \
-    com.cyanogenmod.asusdec \
+    bttest \
     com.android.future.usb.accessory \
     hcitool \
     l2ping \
-    libasusdec_jni \
+    libaudioutils \
     libdumpstate.m470 \
+    libhealthd.m470 \
     librs_jni \
     lights.m470 \
-    make_ext4fs \
-    mischelp \
     setup_fs \
-    tinymix \
     wifimacwriter
+
 
 # Include Proprietary files
 include vendor/hisense/m470/device-vendor.mk
@@ -115,10 +107,10 @@ include vendor/hisense/m470/device-vendor.mk
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    NfcNci \
     nfc_nci.m470 \
+    NfcNci \
     Tag \
+    com.android.nfc_extras
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -155,20 +147,21 @@ PRODUCT_COPY_FILES += \
 
 # etc
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/hisense/m470/prebuilt/etc/dbus.conf:system/etc/dbus.conf \
     device/hisense/m470/prebuilt/etc/enctune.conf:system/etc/enctune.conf \
     device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
     device/hisense/m470/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     device/hisense/m470/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/hisense/m470/prebuilt/etc/model_frontal.xml:system/etc/model_frontal.xml \
+    device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
-    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram.txt \
+    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
     device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -190,10 +183,4 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
 
-# Build characteristics setting 
-PRODUCT_CHARACTERISTICS := tablet
-
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
-
-# Inherit tablet dalvik settings
-$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)

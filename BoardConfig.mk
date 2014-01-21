@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Board naming
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_BOARD_NAME := enterprise
-TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := tegra3
 TARGET_TEGRA_VERSION := t30
@@ -26,11 +22,9 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
-# TARGET_USE_O3 := true
+TARGET_USE_O3 := true
 
-ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
-# ARCH_ARM_USE_NON_NEON_MEMCPY := true
+TARGET_NO_BOOTLOADER := true
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -41,10 +35,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 6567231488
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 BOARD_HAL_STATIC_LIBRARIES := \
-    libdumpstate.m470
-BOARD_HAS_TF_CRYPTO_SST := true
-#DRM
-#LOCAL_CFLAGS += -DENABLE_PASSTHRU_DECRYPTION
+    libdumpstate.m470 \
+    libhealthd.m470
 
 # Kernel
 #TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
@@ -58,7 +50,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-
 # Wireless
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -67,8 +58,8 @@ BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/bcm4330/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 # Sensors invensense
 BOARD_USES_GENERIC_INVENSENSE := false
@@ -84,10 +75,8 @@ BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/hisense/m470/prebuilt/lib/egl/egl.cfg
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-BOARD_HAVE_PIXEL_FORMAT_INFO := true
-
-#Camera options
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+BOARD_HAVE_PIXEL_FORMAT_INFO := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
