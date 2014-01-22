@@ -87,9 +87,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES := \
     audio.a2dp.default \
     audio.r_submix.default \
+    audio.usb.default \
     bttest \
     com.android.future.usb.accessory \
     hcitool \
+    keystore.m470 \
     l2ping \
     libaudioutils \
     libdumpstate.m470 \

@@ -13,36 +13,36 @@
 # limitations under the License.
 
 ifeq ($(TARGET_ARCH),arm)
-ifneq (,$(filter m470, $(TARGET_DEVICE)))
-
-# This is a nasty hack. keystore.m470 is Open Source, but it
-# links against a non-Open library, so we can only build it
-# when that library is present.
-ifeq ($(BOARD_HAS_TF_CRYPTO_SST),true)
+ifeq ($(TARGET_DEVICE),m470)
 
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := keystore.m470
+
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_SRC_FILES := \
 	keymaster_m470.cpp
 
 LOCAL_C_INCLUDES := \
+        bionic \
 	libcore/include \
 	external/openssl/include \
+        external/stlport/stlport \
 	$(LOCAL_PATH)/../security/tf_sdk/include
 
 LOCAL_CFLAGS := -fvisibility=hidden -Wall -Werror
 
-LOCAL_SHARED_LIBRARIES := libcutils liblog libcrypto libtf_crypto_sst
+LOCAL_SHARED_LIBRARIES := libcutils liblog libcrypto libstlport \
+    libtf_crypto_sst
 
 LOCAL_MODULE_TAGS := optional
 
+LOCAL_MODULE_OWNER := google
+
 include $(BUILD_SHARED_LIBRARY)
 
-endif
 endif
 endif
