@@ -91,14 +91,14 @@ PRODUCT_PACKAGES := \
     bttest \
     com.android.future.usb.accessory \
     hcitool \
+    keystore.m470 \
     l2ping \
     libaudioutils \
     libbt-vendor \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
-    lights.m470 \ \
-    sensorservice \
+    lights.m470 \
     setup_fs \
     wifimacwriter
 
@@ -151,7 +151,6 @@ PRODUCT_COPY_FILES += \
 # etc
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/hisense/m470/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/hisense/m470/prebuilt/etc/dbus.conf:system/etc/dbus.conf \
     device/hisense/m470/prebuilt/etc/enctune.conf:system/etc/enctune.conf \
     device/hisense/m470/prebuilt/etc/gps.conf:system/etc/gps.conf \
@@ -160,7 +159,10 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/model_frontal.xml:system/etc/model_frontal.xml \
     device/hisense/m470/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
-    device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab
+    device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
+    device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
+    device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
 
 
 # Wifi
