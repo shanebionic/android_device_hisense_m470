@@ -85,9 +85,7 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
-    audio.a2dp.default \
     audio.r_submix.default \
-    audio.usb.default \
     bttest \
     com.android.future.usb.accessory \
     hcitool \
@@ -98,6 +96,7 @@ PRODUCT_PACKAGES := \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
+    libtinyalsa \
     lights.m470 \
     setup_fs \
     wifimacwriter
