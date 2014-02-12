@@ -91,16 +91,16 @@ PRODUCT_PACKAGES := \
     hcitool \
     keystore.m470 \
     l2ping \
-    libaudioutils \
-    libbt-vendor \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
-    libtinyalsa \
     lights.m470 \
     setup_fs \
     wifimacwriter
 
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/libbt-vendor/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
+    device/hisense/m470/tinyalsa/libtinyalsa.so:system/lib/libtinyalsa.so
 
 # Include Proprietary files
 include vendor/hisense/m470/device-vendor.mk

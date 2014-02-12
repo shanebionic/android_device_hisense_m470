@@ -200,4 +200,27 @@
       </device>
     </capture>
   </alsa_device>
+
+  <alsa_device name="voice"
+               card_id="-1"
+               card_name="tegraaic325x"
+               device_id="2">
+    <pcm_config rate="8000"
+                channels="1"
+                bps="16"
+                period_size="256"
+                period_count="4"
+                start_threshold="1023"
+                stop_threshold="1024"
+                silence_threshold="0"
+                avail_min="1"/>
+    <playback>
+      <device name="bt-sco"/>
+    </playback>
+
+    <capture>
+      <pcm_config start_threshold="1"/>
+      <device name="bt-sco-mic"/>
+    </capture>
+  </alsa_device>
 </AudioConfigs>
