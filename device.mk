@@ -85,22 +85,31 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_PACKAGES := \
+    audio.a2dp.default \
     audio.r_submix.default \
     bttest \
+    charger \
     com.android.future.usb.accessory \
     hcitool \
     keystore.m470 \
     l2ping \
+    libaudioutils \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
+    libstagefrighthw \
     lights.m470 \
     setup_fs \
+    tinyalsa \
     wifimacwriter
 
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/libbt-vendor/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
-    device/hisense/m470/tinyalsa/libtinyalsa.so:system/lib/libtinyalsa.so
+    device/hisense/m470/wifimacwriter/fw_bcm4330_abg.bin:system/vendor/firmware/fw_bcmdhd.bin \
+    device/hisense/m470/wifimacwriter/fw_bcm4330_apsta_abg.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
+    device/hisense/m470/wifimacwriter/fw_bcm4330_p2p_abg.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin
+
+
+#    device/hisense/m470/libbt-vendor/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
 
 # Include Proprietary files
 include vendor/hisense/m470/device-vendor.mk

@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),m470A)
+ifeq ($(TARGET_DEVICE),m470)
 
 
 include $(CLEAR_VARS)

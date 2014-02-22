@@ -5,18 +5,11 @@
 
 if [ -a /data/misc/wifi/nvram_4330.txt ]; then
    echo "wifimacwriter /data/misc/wifi/nvram_4330.txt exists skipping"
-   stage2
+   exit
 fi
 cp /system/etc/nvram_4330.txt /data/misc/wifi/nvram_4330.txt
 echo macaddr=$(cat /sys/devices/platform/bck/wifi_addr) >> /data/misc/wifi/nvram_4330.txt
 echo "over_ride=1" >> /data/misc/wifi/nvram_4330.txt
 chmod 0644 /data/misc/wifi/nvram_4330.txt
 echo "wifimacwriter assigned mac address"
-
-stage2:
-
-
-if [ -f /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml ]; then
-  grep -q nflx_player_type.*6 /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml && exit 0
-  cp /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml.orig && sed -e 's|<int name="nflx_player_type".*||g; s|</map>|<int name="nflx_player_type" value="6" />\n</map>|g' /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml.orig > /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml && rm /data/data/com.netflix.mediaclient/shared_prefs/nfxpref.xml.orig
-fi
+exit
