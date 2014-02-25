@@ -88,9 +88,7 @@ PRODUCT_PACKAGES := \
     audio.a2dp.default \
     audio.r_submix.default \
     bttest \
-    charger \
     com.android.future.usb.accessory \
-    hcitool \
     keystore.m470 \
     l2ping \
     libaudioutils \
@@ -127,7 +125,7 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # build wireless firmware instead of using prebuilts
 WIFI_BAND := 802_11_ABGN
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+# $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

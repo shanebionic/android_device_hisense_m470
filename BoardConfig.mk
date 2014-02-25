@@ -44,6 +44,7 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_TINY_AUDIO := true
 
 # Sense 4.5 / Sense 5 audio.primary blob support. See: include/hardware/audio.h
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
@@ -67,7 +68,7 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/hisense/m470/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/hisense/m470/bluetooth/vnd_m470.txt
@@ -85,7 +86,6 @@ BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 
 # Sensors invensense
 BOARD_USES_GENERIC_INVENSENSE := false
