@@ -98,8 +98,8 @@ on boot
 # Load wifi driver
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/bcmdhd.ko
-    setprop init.svc.wpa_supplicant "wpa_supplicant"
-    setprop init.svc.p2p_supplicant "p2p_supplicant" 
+#    setprop init.svc.wpa_supplicant "wpa_supplicant"
+#    setprop init.svc.p2p_supplicant "p2p_supplicant" 
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness

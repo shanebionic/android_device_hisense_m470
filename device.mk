@@ -84,7 +84,7 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     device/hisense/m470/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     bttest \
@@ -92,22 +92,15 @@ PRODUCT_PACKAGES := \
     keystore.m470 \
     l2ping \
     libaudioutils \
+    libbt-vendor \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
     libstagefrighthw \
+    libtinyalsa \
     lights.m470 \
     setup_fs \
-    tinyalsa \
     wifimacwriter
-
-PRODUCT_COPY_FILES += \
-    device/hisense/m470/wifimacwriter/fw_bcm4330_abg.bin:system/vendor/firmware/fw_bcmdhd.bin \
-    device/hisense/m470/wifimacwriter/fw_bcm4330_apsta_abg.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
-    device/hisense/m470/wifimacwriter/fw_bcm4330_p2p_abg.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin
-
-
-#    device/hisense/m470/libbt-vendor/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
 
 # Include Proprietary files
 include vendor/hisense/m470/device-vendor.mk
@@ -125,7 +118,7 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # build wireless firmware instead of using prebuilts
 WIFI_BAND := 802_11_ABGN
-# $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
