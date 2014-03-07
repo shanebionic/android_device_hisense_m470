@@ -86,6 +86,11 @@ BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+CONFIG_P2P := true
+CONFIG_AP : = true
+CONFIG_WPS := true
+CONFIG_WPS2 := true
+CONFIG_WPS_ER := true
 
 # Sensors invensense
 BOARD_USES_GENERIC_INVENSENSE := false
