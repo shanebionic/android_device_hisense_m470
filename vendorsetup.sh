@@ -21,3 +21,4 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo full_m470-userdebug
+add_lunch_combo omni_m470-userdebug

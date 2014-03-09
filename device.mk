@@ -89,10 +89,12 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     bttest \
     com.android.future.usb.accessory \
+    dbus-daemon \
     keystore.m470 \
     l2ping \
     libaudioutils \
     libbt-vendor \
+    libdbus \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
@@ -165,9 +167,9 @@ PRODUCT_COPY_FILES += \
 
 
 # Wifi
-PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf
+PRODUCT_PACKAGES += \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf
 
 # NFC
 PRODUCT_COPY_FILES += \
