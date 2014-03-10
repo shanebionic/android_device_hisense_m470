@@ -89,10 +89,12 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     bttest \
     com.android.future.usb.accessory \
+    dbus-daemon \
     keystore.m470 \
     l2ping \
     libaudioutils \
     libbt-vendor \
+    libdbus \
     libdumpstate.m470 \
     libhealthd.m470 \
     librs_jni \
