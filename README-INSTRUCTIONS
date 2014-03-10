@@ -1,6 +1,6 @@
 You do not have to use davepmer's kernel but your kernel must support bck for wifi to work
 
-To build, first copy all .diff to your build root folder 
+To build, first copy all .diff to your build root folder and copy toolchain/prebuilt to your root folder/prebuilt
 then from your build root in a terminal run the following
 
 patch -p1 < a2dp-fix.diff
