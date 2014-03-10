@@ -1,0 +1,16 @@
+diff -Naur a/hardware/broadcom/libbt/Android.mk b/hardware/broadcom/libbt/Android.mk
+--- a/hardware/broadcom/libbt/Android.mk	2014-03-09 19:29:36.499262424 -0400
++++ b/hardware/broadcom/libbt/Android.mk	2014-02-23 00:51:20.310642000 -0500
+@@ -1,6 +1,7 @@
+ LOCAL_PATH := $(call my-dir)
+ 
+ ifneq ($(BOARD_HAVE_BLUETOOTH_BCM),)
++ifneq ($(TARGET_DEVICE),m470)
+ 
+ include $(CLEAR_VARS)
+ 
+@@ -45,3 +46,4 @@
+ endif
+ 
+ endif # BOARD_HAVE_BLUETOOTH_BCM
++endif
