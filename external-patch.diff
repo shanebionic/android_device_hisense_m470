@@ -1,0 +1,34 @@
+diff -Naur a/external/tinyalsa/Android.mk b/external/tinyalsa/Android.mk
+--- a/external/tinyalsa/Android.mk	2014-03-09 19:13:54.827270089 -0400
++++ b/external/tinyalsa/Android.mk	2014-02-23 00:50:07.098641000 -0500
+@@ -1,5 +1,7 @@
+ LOCAL_PATH:= $(call my-dir)
+ 
++ifneq ($(TARGET_DEVICE),m470)
++
+ include $(CLEAR_VARS)
+ LOCAL_C_INCLUDES:= external/tinyalsa/include
+ LOCAL_SRC_FILES:= mixer.c pcm.c
+@@ -8,6 +10,7 @@
+ LOCAL_MODULE_TAGS := optional
+ LOCAL_PRELINK_MODULE := false
+ include $(BUILD_SHARED_LIBRARY)
++endif
+ 
+ ifeq ($(HOST_OS), linux)
+ include $(CLEAR_VARS)
+diff -Naur a/external/wpa_suplicant_8/Android.mk b/external/wpa_suplicant_8/Android.mk
+--- a/external/wpa_suplicant_8/Android.mk	2014-03-09 19:14:20.787269878 -0400
++++ b/external/wpa_suplicant_8/Android.mk	2014-03-09 09:11:46.279564000 -0400
+@@ -1,4 +1,5 @@
+ LOCAL_PATH:= $(call my-dir)
++ifneq ($(TARGET_DEVICE),m470)
+ 
+ ifndef WPA_SUPPLICANT_VERSION
+ WPA_SUPPLICANT_VERSION := VER_0_8_X
+@@ -14,4 +15,4 @@
+ ifeq ($(WPA_SUPPLICANT_VERSION),VER_2_1_DEVEL)
+ include $(call all-subdir-makefiles)
+ endif
+-
++endif

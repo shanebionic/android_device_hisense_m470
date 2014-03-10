@@ -1,0 +1,12 @@
+You do not have to use davepmer's kernel but your kernel must support bck for wifi to work
+
+To build, first copy all .diff to your build root folder 
+then from your build root in a terminal run the following
+
+patch -p1 < a2dp-fix.diff
+patch -p1 < fastaudio.diff
+patch -p1 < external-patch.diff
+patch -p1 < hardware-patch.diff
+
+
+
