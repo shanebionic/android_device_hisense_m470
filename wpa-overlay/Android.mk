@@ -23,9 +23,9 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-ifeq ($(TARGET_DEVICE),m470)
-
 LOCAL_PATH := $(call my-dir)
+
+ifeq ($(TARGET_DEVICE),m470)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE       := wpa_supplicant_overlay.conf
@@ -42,14 +42,17 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
+endif
 
-# include $(CLEAR_VARS)
-# LOCAL_MODULE       := p2p_supplicant.conf
-# LOCAL_MODULE_TAGS  := optional
-# LOCAL_MODULE_CLASS := ETC
-# LOCAL_SRC_FILES    := $(LOCAL_MODULE)
-# LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
-# include $(BUILD_PREBUILT)
+ifeq ($(TARGET_DEVICE),m470)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := p2p_supplicant.conf
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
+include $(BUILD_PREBUILT)
 
 endif
 
