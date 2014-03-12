@@ -64,7 +64,7 @@ TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
 BOARD_KERNEL_CMDLINE := androidboot.selinux=enforce
 TARGET_KERNEL_SOURCE := kernel/hisense/m470
 TARGET_KERNEL_CONFIG := dave_m470_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
 
 
 # Bluetooth
