@@ -8,5 +8,7 @@ patch -p1 < fastaudio.diff
 patch -p1 < external-patch.diff
 patch -p1 < hardware-patch.diff
 
+last delete hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+
 
 
