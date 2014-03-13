@@ -7,7 +7,7 @@ Date:   Sun Mar 02 22:13:30 2014 -0500
     libnvaviparserhal.so from loading; also, remove access to
     Nvidia's HE-AAC+ codec which remains broken
 
-diff --git a/frameworks/av/include/media/stagefright/MediaDefs.h b/frameworks/av/include/media/stagefright/MediaDefs.h
+diff --git a/frameworks/av/include/media/stagefright/MediaDefs.h b/frameworks/av/include/stagefright/MediaDefs.h
 index 85693d4..fcbca98 100644
 --- a/frameworks/av/include/media/stagefright/MediaDefs.h
 +++ b/frameworks/av/include/media/stagefright/MediaDefs.h
