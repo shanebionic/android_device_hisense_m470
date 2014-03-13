@@ -18,3 +18,16 @@ index cd052e6..4d94314 100644
      Mutex::Autolock lock(mLock);
  
      // audio output devices usage
+diff --git a/frameworks/av/services/audioflinger/Configuration.h b/services/audioflinger/Configuration.h
+index bc2038a..10d6ac9 100644
+--- a/frameworks/av/services/audioflinger/Configuration.h
++++ b/frameworks/av/services/audioflinger/Configuration.h
+@@ -21,7 +21,7 @@
+ #define ANDROID_AUDIOFLINGER_CONFIGURATION_H
+ 
+ // uncomment to enable detailed battery usage reporting (not debugged)
+-//#define ADD_BATTERY_DATA
++#define ADD_BATTERY_DATA
+ 
+ // uncomment to enable the audio watchdog
+ //#define AUDIO_WATCHDOG
