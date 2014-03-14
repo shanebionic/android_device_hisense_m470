@@ -88,6 +88,8 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     bttest \
+    charger \
+    charger_res_images \
     com.android.future.usb.accessory \
     dbus-daemon \
     keystore.m470 \
