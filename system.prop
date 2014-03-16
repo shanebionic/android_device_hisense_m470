@@ -20,6 +20,5 @@ ro.secure=0
 agpsd.lib_path=/system/lib/libagps-brcm4751.so
 agpsd.dev_path=/dev/ttyACM4
 
-#taktiK
 
 ro.zygote.disable_gl_preload=true

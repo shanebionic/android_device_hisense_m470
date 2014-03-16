@@ -4,11 +4,10 @@ To build, first copy all .diff to your build root folder
 then from your build root in a terminal run the following
 
 patch -p1 < a2dp-fix.diff
-patch -p1 < fastaudio.diff
 patch -p1 < external-patch.diff
+patch -p1 < fastaudio.diff
 patch -p1 < hardware-patch.diff
-
-last delete hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
+patch -p1 < init-cm11-patch.diff
 
 
 

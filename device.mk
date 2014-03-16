@@ -122,7 +122,10 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # build wireless firmware instead of using prebuilts
 WIFI_BAND := 802_11_ABGN
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+PRODUCT_COPY_FILES += \
+    hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/fw_bcm4330_abg.bin:system/vendor/firmware/fw_bcmdhd.bin \
+    hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/fw_bcm4330_apsta_bg.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin
+#
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -171,8 +174,7 @@ PRODUCT_COPY_FILES += \
 # Wifi
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf
+    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # NFC
 PRODUCT_COPY_FILES += \
