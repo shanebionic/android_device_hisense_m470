@@ -14,17 +14,19 @@ diff -Naur a/hardware/broadcom/libbt/Android.mk b/hardware/broadcom/libbt/Androi
  
  endif # BOARD_HAVE_BLUETOOTH_BCM
 +endif
-diff -Naur a/hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk b/hardware/broadcom/wlan/bcmdhd/firmware/device-bcm.mk
---- a/hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk	2014-03-14 09:40:57.003218000 -0400
-+++ b/hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk	2014-03-14 20:20:28.011053892 -0400
-@@ -15,7 +15,10 @@
+diff -Naur a/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk b/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk
+--- a/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk	2014-03-17 13:24:49.298475973 -0400
++++ b/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk	2014-03-15 14:45:07.002604000 -0400
+@@ -14,6 +14,7 @@
+ # limitations under the License.
  #
- 
- ########################
-+
+ LOCAL_PATH := $(call my-dir)
 +ifneq ($(TARGET_DEVICE),m470)
- -include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
-+endif
  
- ifeq ($(strip $(WIFI_BAND)),802_11_BG)
- BCM_FW_SRC_FILE_STA := fw_bcm4330_bg.bin
+ ifeq ($(WPA_SUPPLICANT_VERSION),VER_0_8_X)
+ 
+@@ -65,3 +66,4 @@
+ ########################
+ 
+ endif
++endif
