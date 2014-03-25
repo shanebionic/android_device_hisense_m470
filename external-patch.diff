@@ -1,3 +1,33 @@
+diff -Naur a/external/wpa_supplicant_8/Android.mk b/external/wpa_supplicant_8/Android.mk
+--- a/external/wpa_supplicant_8/Android.mk	2014-03-14 12:49:53.495484010 -0400
++++ b/external/wpa_supplicant_8/Android.mk	2014-03-14 12:50:52.387485391 -0400
+@@ -1,4 +1,5 @@
+ LOCAL_PATH:= $(call my-dir)
++ifneq ($(TARGET_DEVICE),m470)
+ 
+ ifndef WPA_SUPPLICANT_VERSION
+ WPA_SUPPLICANT_VERSION := VER_0_8_X
+@@ -14,5 +15,6 @@
+ ifeq ($(WPA_SUPPLICANT_VERSION),VER_2_1_DEVEL)
+ include $(call all-subdir-makefiles)
+ endif
++endif
+ 
+ # 
+diff -Naur a/frameworks/native/libs/binder/IPCThreadState.cpp b/frameworks/native/libs/binder/IPCThreadState.cpp
+--- a/frameworks/native/libs/binder/IPCThreadState.cpp	2014-03-14 12:52:47.611488093 -0400
++++ b/frameworks/native/libs/binder/IPCThreadState.cpp	2014-03-14 09:54:30.759237000 -0400
+@@ -366,6 +366,10 @@
+     return state->getCallingPid();
+ }
+ 
++extern "C" int _ZN7android14IPCThreadState13getCallingUidEv(IPCThreadState *state) {
++    return state->getCallingUid();
++}
++
+ int IPCThreadState::getCallingPid() const
+ {
+     return mCallingPid;
 diff -Naur a/external/tinyalsa/Android.mk b/external/tinyalsa/Android.mk
 --- a/external/tinyalsa/Android.mk	2014-03-09 19:13:54.827270089 -0400
 +++ b/external/tinyalsa/Android.mk	2014-02-23 00:50:07.098641000 -0500
@@ -16,47 +46,4 @@ diff -Naur a/external/tinyalsa/Android.mk b/external/tinyalsa/Android.mk
 +endif
  
  ifeq ($(HOST_OS), linux)
- include $(CLEAR_VARS)diff -Naur a/external/wpa_supplicant_8/Android.mk b/external/wpa_supplicant_8/Android.mk
---- a/external/wpa_supplicant_8/Android.mk	2014-03-14 12:49:53.495484010 -0400
-+++ b/external/wpa_supplicant_8/Android.mk	2014-03-14 12:50:52.387485391 -0400
-@@ -1,4 +1,5 @@
- LOCAL_PATH:= $(call my-dir)
-+ifneq ($(TARGET_DEVICE),m470)
- 
- ifndef WPA_SUPPLICANT_VERSION
- WPA_SUPPLICANT_VERSION := VER_0_8_X
-@@ -14,5 +15,6 @@
- ifeq ($(WPA_SUPPLICANT_VERSION),VER_2_1_DEVEL)
- include $(call all-subdir-makefiles)
- endif
-+endif
-diff -Naur a/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk b/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk
---- a/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk	2014-03-17 22:14:27.201674648 -0400
-+++ b/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib/Android.mk	2014-03-15 14:45:07.002604000 -0400
-@@ -14,6 +14,7 @@
- # limitations under the License.
- #
- LOCAL_PATH := $(call my-dir)
-+ifneq ($(TARGET_DEVICE),m470)
- 
- ifeq ($(WPA_SUPPLICANT_VERSION),VER_0_8_X)
- 
-@@ -65,3 +66,4 @@
- ########################
- 
- endif
-+endif 
-diff -Naur a/frameworks/native/libs/binder/IPCThreadState.cpp b/frameworks/native/libs/binder/IPCThreadState.cpp
---- a/frameworks/native/libs/binder/IPCThreadState.cpp	2014-03-14 12:52:47.611488093 -0400
-+++ b/frameworks/native/libs/binder/IPCThreadState.cpp	2014-03-14 09:54:30.759237000 -0400
-@@ -366,6 +366,10 @@
-     return state->getCallingPid();
- }
- 
-+extern "C" int _ZN7android14IPCThreadState13getCallingUidEv(IPCThreadState *state) {
-+    return state->getCallingUid();
-+}
-+
- int IPCThreadState::getCallingPid() const
- {
-     return mCallingPid;
+ include $(CLEAR_VARS)
