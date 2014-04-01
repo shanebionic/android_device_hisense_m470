@@ -38,6 +38,7 @@
     <string-array translatable="false" name="networkAttributes">
         <item>"wifi,1,1,2,-1,true"</item>
         <item>"bluetooth,7,7,0,-1,true"</item>
+        <item>"wifi_p2p,13,1,0,-1,true"</item>
         <item>"ethernet,9,9,9,-1,true"</item>
     </string-array>
 
@@ -87,7 +88,7 @@
 
     <!-- Device type information conforming to Annex B format in WiFi Direct specification.
     The default represents a dual-mode smartphone -->
-    <string translatable="false" name="config_wifi_p2p_device_type">10-0050F204-5</string>
+    <!--string translatable="false" name="config_wifi_p2p_device_type">1-0050F204-5</string -->
 
     <bool name="config_enableWifiDisplay">true</bool>
 
@@ -117,18 +118,23 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>5</item>
-        <item>15</item>
+        <item>10</item>
         <item>50</item>
         <item>100</item>
         <item>200</item>
+        <item>300</item>
         <item>400</item>
-        <item>1000</item>
-        <item>2000</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>900</item>
+        <item>1100</item>
+        <item>1400</item>
+        <item>1700</item>
+        <item>2100</item>
+        <item>2500</item>
         <item>3000</item>
-        <item>5000</item>
-        <item>10000</item>
-        <item>30000</item>
+        <item>4000</item>
     </integer-array>
 
 
@@ -137,19 +143,24 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>5</item>    <!-- 0-5 -->
-        <item>20</item>   <!-- 5-15 -->
-        <item>30</item>   <!-- 15-50 -->
-        <item>40</item>   <!-- 50-100 -->
-        <item>50</item>   <!-- 100-200 -->
-        <item>60</item>   <!-- 200-400 -->
-        <item>70</item>   <!-- 400-1000 -->
-        <item>80</item>   <!-- 1000-2000 -->
-        <item>130</item>  <!-- 2000-3000 -->
-        <item>180</item>  <!-- 3000-5000 -->
-        <item>255</item>  <!-- 5000-10000 -->
-        <item>255</item>  <!-- 10000-30000 -->
-        <item>255</item>  <!-- 30000+ -->
+        <item>10</item>
+        <item>40</item>
+        <item>60</item>
+        <item>64</item>
+        <item>68</item>
+        <item>72</item>
+        <item>76</item>
+        <item>80</item>
+        <item>84</item>
+        <item>88</item>
+        <item>92</item>
+        <item>96</item>
+        <item>100</item>
+        <item>130</item>
+        <item>160</item>
+        <item>190</item>
+        <item>220</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -177,7 +188,7 @@
     </integer-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">5</integer>
+    <integer name="config_screenBrightnessDim">10</integer>
 
     <!-- This device is not "voice capable"; it's data-only. -->
     <bool name="config_voice_capable">false</bool>
@@ -223,7 +234,7 @@
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
-    <bool name="config_lidControlsSleep">true</bool>
+    <bool name="config_lidControlsSleep">false</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -259,7 +270,5 @@
 
     <!-- Disable lockscreen translucent decor by default -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
-
-    <bool name="config_enableWifiDisplay">true</bool>
 
 </resources>
