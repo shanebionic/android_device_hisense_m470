@@ -88,6 +88,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
+    brcm_patchram_plus \
     bttest \
     charger \
     charger_res_images \
@@ -174,7 +175,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf
+    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf \
 
 # NFC
 PRODUCT_COPY_FILES += \

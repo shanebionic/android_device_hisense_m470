@@ -1,4 +1,2 @@
 
-    audio.a2dp.default \
-
-    audio.usb.default \
+    device/hisense/m470/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant.conf
