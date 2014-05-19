@@ -443,4 +443,4 @@ service nvcpud /system/bin/nvcpud
     group root
 
 on property:sys.boot_completed=1
-    write /sys/devices/system/cpu/cpuquiet/current_governor "balanced"
+    write /sys/devices/system/cpu/cpuquiet/current_governor "runnable"

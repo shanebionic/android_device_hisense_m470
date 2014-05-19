@@ -39,7 +39,7 @@ healthd_board_init(struct healthd_config *config)
     config->batteryTechnologyPath        = "/sys/class/power_supply/battery/technology";
     config->batteryCurrentNowPath        = "/sys/class/power_supply/battery/current_now";
   //config->batteryChargeCounterPath
-    config->dockBatterySupported         = false;
+  //config->dockBatterySupported         = false;
 }
 
 int
