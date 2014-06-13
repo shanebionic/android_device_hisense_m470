@@ -92,6 +92,7 @@ PRODUCT_PACKAGES += \
     bttest \
     charger \
     charger_res_images \
+    CMFileManager \
     com.android.future.usb.accessory \
     keystore.m470 \
     l2ping \
