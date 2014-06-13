@@ -10,6 +10,6 @@ patch -p1 < build-mods.diff
 
 rm build-mods.diff
 
-cd vendor/cm
+rm -rf system/extras/su
 
-./get-prebuilts
+

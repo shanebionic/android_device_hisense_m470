@@ -407,7 +407,7 @@ service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsc
   # inet sdcard_rw sdcard_r
 
 # Prepare TF service
-# import init.tf.rc
+import init.tf.rc
 
 # create filesystems if necessary
 service setup_fs /system/bin/setup_fs \
