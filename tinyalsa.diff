@@ -1,0 +1,20 @@
+diff -Naur a/external/tinyalsa/Android.mk b/external/tinyalsa/Android.mk
+--- a/external/tinyalsa/Android.mk	2014-06-13 09:40:48.777409000 -0400
++++ b/external/tinyalsa/Android.mk	2014-06-13 10:06:56.501402590 -0400
+@@ -1,5 +1,7 @@
+ LOCAL_PATH:= $(call my-dir)
+ 
++ifneq ($(TARGET_DEVICE),m470)
++
+ include $(CLEAR_VARS)
+ LOCAL_C_INCLUDES:= external/tinyalsa/include
+ LOCAL_SRC_FILES:= mixer.c pcm.c
+@@ -10,6 +12,8 @@
+ 
+ include $(BUILD_SHARED_LIBRARY)
+ 
++endif
++
+ ifeq ($(HOST_OS), linux)
+ include $(CLEAR_VARS)
+ LOCAL_C_INCLUDES:= external/tinyalsa/include

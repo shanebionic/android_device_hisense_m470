@@ -1,0 +1,14 @@
+diff -Naur a/frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp b/frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp
+--- a/frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp	2014-06-13 09:41:12.297409000 -0400
++++ b/frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp	2014-06-13 10:10:01.105401759 -0400
+@@ -2302,6 +2302,10 @@
+ }
+ 
+ status_t MediaPlayerService::pullBatteryData(Parcel* reply) {
++    // DoPa (20140228) - if this doesn't look like a valid Parcel*, exit
++    if (!((uint32_t)reply & 0xf0000000))
++        return NO_ERROR;
++
+     Mutex::Autolock lock(mLock);
+ 
+     // audio output devices usage

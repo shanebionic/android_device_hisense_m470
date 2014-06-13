@@ -1,0 +1,2 @@
+allow dhcp dhcp_system_file:dir r_dir_perms;
+allow dhcp dhcp_system_file:file rx_file_perms;

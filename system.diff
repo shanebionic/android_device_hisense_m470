@@ -1,7 +1,7 @@
 diff -Naur a/system/core/init/init.c b/system/core/init/init.c
---- a/system/core/init/init.c	2014-04-10 18:38:09.450980000 -0400
-+++ b/system/core/init/init.c	2014-04-10 18:39:17.898981000 -0400
-@@ -825,6 +825,14 @@
+--- a/system/core/init/init.c	2014-06-13 09:54:34.309405000 -0400
++++ b/system/core/init/init.c	2014-06-13 10:23:12.613398194 -0400
+@@ -822,6 +822,14 @@
          cnt = snprintf(prop, sizeof(prop), "ro.boot.%s", boot_prop_name);
          if (cnt < PROP_NAME_MAX)
              property_set(prop, value);
@@ -15,11 +15,11 @@ diff -Naur a/system/core/init/init.c b/system/core/init/init.c
 +        property_set("ro.boot.mode", "charger");
      }
  }
-diff --git a/system/core/rootdir/init.rc bsystem/core//rootdir/init.rc
-index a0a9813..66f1379 100644
---- a/system/core/rootdir/init.rc
-+++ b/system/core/rootdir/init.rc
-@@ -26,7 +26,7 @@ on init
+ 
+diff -Naur a/system/core/rootdir/init.rc b/system/core/rootdir/init.rc
+--- a/system/core/rootdir/init.rc	2014-06-13 09:54:34.373405000 -0400
++++ b/system/core/rootdir/init.rc	2014-06-13 10:23:35.873398089 -0400
+@@ -34,7 +34,7 @@
  
  sysclktz 0
  
@@ -27,4 +27,4 @@ index a0a9813..66f1379 100644
 +loglevel 6
  
  # Backward compatibility
-     symlink /system/etc /etc 
+     symlink /system/etc /etc

@@ -1,1 +1,16 @@
 allow appdomain sysfs_devices_system_cpu:dir r_dir_perms;
+
+# DoPa (20140416) - everything below was added to fix error messages;
+# they may not be the most appropriate solutions
+
+# let apps mess with CPU settings
+allow appdomain sysfs_devices_system_cpu:file rw_file_perms;
+
+# several apps try to read this type of file
+allow appdomain init_tmpfs:file read;
+
+# DoPa (20140526)
+# give everyone access to tegra graphics devices(?)
+allow appdomain nv_device:chr_file rw_file_perms;
+
+allow appdomain init:fifo_file r_file_perms;

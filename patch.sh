@@ -2,11 +2,17 @@ cp *.diff ../../../
 
 cd ../../../
 
-patch -p1 < a2dp-fix.diff
-patch -p1 < external-patch.diff
-patch -p1 < fastaudio-fix.diff
-patch -p1 < hardware-patch.diff
-patch -p1 < init-cm11-patch.diff
-patch -p1 < mircast.diff
+patch -p1 < audioflinger.diff
+patch -p1 < broadcom.diff
+patch -p1 < libstagefright.diff
+patch -p1 < MediaPlayerService.diff
+patch -p1 < system.diff
+patch -p1 < tinyalsa.diff
+# patch -p1 < ucnv.diff
+patch -p1 < wpa_supplicant.diff
+
+# rm -rf system/extras/su
 
 rm *.diff
+cd device/hisense/m470
+

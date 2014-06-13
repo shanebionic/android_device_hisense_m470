@@ -24,6 +24,8 @@ TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+# Tegra 3 does have neon however setting to false causes a decrease in test scores 
+# Setting false kills netflix
 ARCH_ARM_USE_NON_NEON_MEMCPY := true
 
 # Board naming
@@ -32,6 +34,7 @@ TARGET_BOOTLOADER_BOARD_NAME := enterprise
 TARGET_BOARD_PLATFORM := tegra3
 
 # Avoid the generation of ldrcc instructions
+# Sero 7 Pro works fine with ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 # Optimization build flags
@@ -44,7 +47,7 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
-BOARD_USES_TINY_AUDIO := true
+# BOARD_USES_TINY_AUDIO := true
 
 # Sense 4.5 / Sense 5 audio.primary blob support. See: include/hardware/audio.h
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
@@ -57,7 +60,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 
 BOARD_HAL_STATIC_LIBRARIES := \
     libdumpstate.m470 \
-    libhealthd.m470
+    libhealthd
+# Sero 7 Pro does not need libhealth.m470 
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
@@ -75,7 +79,7 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/hisense/m470/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/hisense/m470/bluetooth/vnd_m470.txt
+# BOARD_BLUEDROID_VENDOR_CONF := device/hisense/m470/bluetooth/vnd_m470.txt
 
 # Use the CM PowerHAL
 TARGET_USES_CM_POWERHAL := true
@@ -127,19 +131,31 @@ BOARD_SEPOLICY_DIRS := \
         device/hisense/m470/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-        file_contexts \
-        genfs_contexts \
         app.te \
         btmacreader.te \
         device.te \
+        dhcp.te \
         drmserver.te \
-        init_shell.te \
         file.te \
+        file_contexts \
+        genfs_contexts \
+        gpsd.te \
+        healthd.te \
+        init.te \
+        init_shell.te \
+        kernel.te \
+        keystore \
+        mediaserver.te \
+        netd.te \
         rild.te \
         sensors_config.te \
-        shell.te \
         surfaceflinger.te \
-        system.te \
+        shell.te \
+        su.te \
+        surfaceflinger.te \
+        system_app.te \
+        ueventd.te \
+        untrusted_app.te \
         zygote.te
 
 BOARD_CHARGER_ENABLE_SUSPEND := true

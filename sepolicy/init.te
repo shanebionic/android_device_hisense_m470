@@ -1,0 +1,2 @@
+# Transitions to seclabel processes in init.rc
+allow init self:capability sys_module;
