@@ -1,6 +1,6 @@
 diff -Naur a/external/wpa_supplicant_8/Android.mk b/external/wpa_supplicant_8/Android.mk
---- a/external/wpa_supplicant_8/Android.mk	2014-06-13 09:41:09.037409000 -0400
-+++ b/external/wpa_supplicant_8/Android.mk	2014-06-13 10:07:31.521402433 -0400
+--- a/external/wpa_supplicant_8/Android.mk	2014-06-14 15:13:11.497872000 -0400
++++ b/external/wpa_supplicant_8/Android.mk	2014-06-14 18:54:10.861737048 -0400
 @@ -1,5 +1,7 @@
  LOCAL_PATH:= $(call my-dir)
  
@@ -9,8 +9,11 @@ diff -Naur a/external/wpa_supplicant_8/Android.mk b/external/wpa_supplicant_8/An
  ifndef WPA_SUPPLICANT_VERSION
  WPA_SUPPLICANT_VERSION := VER_0_8_X
  endif
-@@ -14,3 +16,4 @@
+@@ -14,6 +16,7 @@
  ifeq ($(WPA_SUPPLICANT_VERSION),VER_2_1_DEVEL)
  include $(call all-subdir-makefiles)
- endif
 +endif
+ endif
+ 
+ 
+ # 

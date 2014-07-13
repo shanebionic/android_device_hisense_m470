@@ -1,0 +1,60 @@
+diff -Naur a/external/wpa_supplicant_8/hostapd/android.config b/external/wpa_supplicant_8/hostapd/android.config
+--- a/external/wpa_supplicant_8/hostapd/android.config	2014-07-08 04:56:10.501288000 -0400
++++ b/external/wpa_supplicant_8/hostapd/android.config	2014-05-17 22:53:36.589396000 -0400
+@@ -20,7 +20,7 @@
+ #CFLAGS += -I../../madwifi # change to the madwifi source directory
+ 
+ # Driver interface for drivers using the nl80211 kernel interface
+-#CONFIG_DRIVER_NL80211=y
++CONFIG_DRIVER_NL80211=y
+ # driver_nl80211.c requires a rather new libnl (version 1.1) which may not be
+ # shipped with your distribution yet. If that is the case, you need to build
+ # newer libnl version and point the hostapd build to use it.
+diff -Naur a/external/wpa_supplicant_8/wpa_supplicant/android.config b/external/wpa_supplicant_8/wpa_supplicant/android.config
+--- a/external/wpa_supplicant_8/wpa_supplicant/android.config	2014-07-08 04:56:10.577288000 -0400
++++ b/external/wpa_supplicant_8/wpa_supplicant/android.config	2014-05-17 22:53:36.637396000 -0400
+@@ -86,8 +86,8 @@
+ #CONFIG_DRIVER_WEXT=y
+ 
+ # Driver interface for Linux drivers using the nl80211 kernel interface
+-#CONFIG_DRIVER_NL80211=y
+-CONFIG_LIBNL20=y
++CONFIG_DRIVER_NL80211=y
++#CONFIG_LIBNL20=y
+ 
+ # Driver interface for FreeBSD net80211 layer (e.g., Atheros driver)
+ #CONFIG_DRIVER_BSD=y
+@@ -496,7 +496,7 @@
+ CONFIG_HS20=y
+ 
+ # Disable roaming in wpa_supplicant
+-CONFIG_NO_ROAMING=y
++#CONFIG_NO_ROAMING=y
+ 
+ # AP mode operations with wpa_supplicant
+ # This can be used for controlling AP mode operations with wpa_supplicant. It
+@@ -512,12 +512,9 @@
+ 
+ CONFIG_TDLS=y
+ 
+-#Enable Wifi Display
+-CONFIG_WIFI_DISPLAY=y
+-
+ # Autoscan
+ # This can be used to enable automatic scan support in wpa_supplicant.
+-# See wpa_supplicant.conf for more information on autoscan usage.
++#Â See wpa_supplicant.conf for more information on autoscan usage.
+ #
+ # Enabling directly a module will enable autoscan support.
+ # For exponential module:
+@@ -534,3 +531,10 @@
+ #CONFIG_EXT_PASSWORD_TEST=y
+ 
+ include $(wildcard $(LOCAL_PATH)/android_config_*.inc)
++
++# bgscan
++NEED_BGSCAN=y
++CONFIG_BGSCAN_LEARN=y
++CONFIG_BGSCAN_SIMPLE=y
++
++CONFIG_WIFI_DISPLAY=y

@@ -1,7 +1,7 @@
 import init.m470.usb.rc
 
 on early-init
-    write /sys/devices/system/cpu/cpuquiet/current_governor "userspace"
+   write /sys/devices/system/cpu/cpuquiet/current_governor "userspace"
 
 on init
     mkdir /mnt/shell/emulated 0700 shell shell
@@ -443,4 +443,4 @@ service nvcpud /system/bin/nvcpud
     group root
 
 on property:sys.boot_completed=1
-    write /sys/devices/system/cpu/cpuquiet/current_governor "runnable"
+    write /sys/devices/system/cpu/cpuquiet/current_governor "balanced"

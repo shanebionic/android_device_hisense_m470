@@ -99,10 +99,11 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     librs_jni \
     libdumpstate.m470 \
-    libhealthd \
+    libhealth.470 \
     libstagefrighthw \
     libtinyalsa \
     lights.m470 \
+    make_ext4fs \
     setup_fs \
     wifimacwriter
 
@@ -120,12 +121,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_CHARACTERISTICS := tablet
 
-# build wireless firmware instead of using prebuilts
 WIFI_BAND := 802_11_ABGN
-PRODUCT_COPY_FILES += \
-    hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/fw_bcm4330_abg.bin:system/vendor/firmware/fw_bcmdhd.bin \
-    hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/fw_bcm4330_apsta_bg.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin
-#
+include hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -167,8 +164,8 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/nvaudio_conf.xml:system/etc/nvaudio_conf.xml \
     device/hisense/m470/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf \
     device/hisense/m470/prebuilt/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
-    device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/hisense/m470/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    device/hisense/m470/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
 
 # Wifi

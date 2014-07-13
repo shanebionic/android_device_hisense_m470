@@ -1,0 +1,17 @@
+diff -Naur a/hardware/broadcom/libbt/Android.mk b/hardware/broadcom/libbt/Android.mk
+--- a/hardware/broadcom/libbt/Android.mk	2014-06-13 09:43:23.945408000 -0400
++++ b/hardware/broadcom/libbt/Android.mk	2014-06-13 10:21:18.157398710 -0400
+@@ -1,5 +1,7 @@
+ LOCAL_PATH := $(call my-dir)
+ 
++ifneq ($(TARGET_DEVICE),m470)
++
+ ifneq ($(BOARD_HAVE_BLUETOOTH_BCM),)
+ 
+ include $(CLEAR_VARS)
+@@ -44,4 +46,5 @@
+     include $(LOCAL_PATH)/conf/moto/wingray/Android.mk
+ endif
+ 
++endif
+ endif # BOARD_HAVE_BLUETOOTH_BCM
