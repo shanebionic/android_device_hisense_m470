@@ -10,7 +10,7 @@ diff -Naur a/build/core/main.mk b/build/core/main.mk
  
    ifeq ($(user_variant),userdebug)
      # Pick up some extra useful tools
-diff -Naur a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
+diff -Naur a/vendor/du/config/common.mk b/vendor/du/config/common.mk
 --- a/vendor/cm/config/common.mk	2014-03-24 11:51:46.660532000 -0400
 +++ b/vendor/cm/config/common.mk	2014-03-24 11:53:19.936534668 -0400
 @@ -71,7 +71,7 @@
